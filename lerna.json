@@ -1,0 +1,7 @@
+{
+  "packages": ["api", "admin", "client"],
+  "npmClient": "yarn",
+  "lerna": "3.20.2",
+  "version": "0.0.0",
+  "useWorkspaces": true
+}

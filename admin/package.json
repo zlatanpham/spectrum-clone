@@ -1,0 +1,9 @@
+{
+  "name": "@spectrum/admin",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "start": "echo 'admin app is ready'"
+  }
+}
