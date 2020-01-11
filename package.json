@@ -3,14 +3,37 @@
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
+  "private": true,
   "scripts": {
+    "bootstrap": "lerna bootstrap",
     "start": "lerna exec -- yarn start",
     "start:client": "lerna exec --scope=@spectrum/client -- yarn start",
+    "dev:client": "lerna exec --scope=@spectrum/client -- yarn dev",
+    "storybook": "lerna exec --scope=@spectrum/client -- yarn storybook",
+    "build-storybook": "lerna exec --scope=@spectrum/client -- yarn build-storybook",
     "start:admin": "lerna exec --scope=@spectrum/admin -- yarn start",
-    "start:api": "lerna exec --scope=@spectrum/api -- yarn start"
+    "start:api": "lerna exec --scope=@spectrum/api -- yarn start",
+    "prettify": "prettier -c --write \"*/**\""
   },
   "devDependencies": {
-    "lerna": "^3.20.2"
+    "@commitlint/cli": "^8.3.4",
+    "@commitlint/config-conventional": "^8.3.4",
+    "husky": "^4.0.6",
+    "lerna": "^3.20.2",
+    "lint-staged": "^9.5.0",
+    "prettier": "^1.19.1"
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "**/src/**/*.{js,jsx,ts,tsx,json,css,scss,md}": [
+      "prettier --write",
+      "git add"
+    ]
   },
   "workspaces": [
     "./client",
