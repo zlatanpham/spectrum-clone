@@ -1,0 +1,15 @@
+version: '3'
+services:
+  db:
+    image: mongo:4.2.2-bionic
+    container_name: spectrum-db
+    ports:
+      - 27017:27017
+    environment:
+      MONGO_INITDB_DATABASE: spectrum
+      MONGO_INITDB_ROOT_USERNAME: spectrum
+      MONGO_INITDB_ROOT_PASSWORD: spectrum
+    volumes:
+      - spectrum_data:/data/db
+volumes:
+  spectrum_data:
