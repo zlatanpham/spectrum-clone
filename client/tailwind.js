@@ -10,12 +10,7 @@ module.exports = {
     colors: {
       transparent: 'transparent',
 
-      black: '#384047',
       white: '#fff',
-
-      pink: '#E21970',
-      primary: '#772CF3',
-      secondary: '#24292E',
       bg: {
         default: '#FFFFFF',
         reverse: '#16171A',
