@@ -9,6 +9,8 @@
     "build-storybook": "build-storybook"
   },
   "dependencies": {
+    "@storybook/addon-storysource": "^5.2.8",
+    "@storybook/addon-viewport": "^5.2.8",
     "@zeit/next-css": "^1.0.1",
     "awesome-typescript-loader": "^5.2.1",
     "babel-plugin-macros": "^2.8.0",

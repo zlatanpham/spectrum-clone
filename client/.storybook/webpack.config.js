@@ -3,17 +3,11 @@ const path = require('path');
 module.exports = ({ config }) => {
   config.module.rules.push({
     test: /\.(ts|tsx)$/,
-    use: [
-      {
-        loader: require.resolve('awesome-typescript-loader'),
-      },
-      // Optional
-      {
-        loader: require.resolve('react-docgen-typescript-loader'),
-      },
-    ],
+    loader: require.resolve('babel-loader'),
+    options: {
+      presets: [require.resolve('babel-preset-react-app')],
+    },
   });
-  config.resolve.extensions.push('.ts', '.tsx');
 
   config.module.rules.push({
     test: /\.css$/,
@@ -28,5 +22,17 @@ module.exports = ({ config }) => {
     include: path.resolve(__dirname, '../'),
   });
 
+  config.module.rules.push({
+    test: /\.stories\.tsx?$/,
+    loaders: [
+      {
+        loader: require.resolve('@storybook/addon-storysource/loader'),
+        options: { parser: 'typescript' },
+      },
+    ],
+    enforce: 'pre',
+  });
+
+  config.resolve.extensions.push('.ts', '.tsx');
   return config;
 };
