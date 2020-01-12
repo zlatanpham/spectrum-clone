@@ -6,7 +6,6 @@ services:
     ports:
       - 27017:27017
     environment:
-      MONGO_INITDB_DATABASE: spectrum
       MONGO_INITDB_ROOT_USERNAME: spectrum
       MONGO_INITDB_ROOT_PASSWORD: spectrum
     volumes:

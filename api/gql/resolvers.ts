@@ -1,7 +1,6 @@
-import { mergeResolvers } from 'graphql-toolkit'
+// import { mergeResolvers } from 'graphql-toolkit'
+import merge from 'lodash/merge'
 import userResolver from './user/user_resolver'
 
 
-export default mergeResolvers(
-  [userResolver]
-)
+export default merge(userResolver)
