@@ -12,7 +12,7 @@
     "storybook": "lerna exec --scope=@spectrum/client -- yarn storybook",
     "build-storybook": "lerna exec --scope=@spectrum/client -- yarn build-storybook",
     "start:admin": "lerna exec --scope=@spectrum/admin -- yarn start",
-    "start:api": "lerna exec --scope=@spectrum/api -- yarn start",
+    "start:api": "lerna exec --scope=api -- yarn start",
     "prettify": "prettier -c --write \"*/**\""
   },
   "devDependencies": {

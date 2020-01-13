@@ -1,9 +1,37 @@
 {
-  "name": "@spectrum/api",
+  "name": "api",
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "start": "echo 'api app is ready'"
+    "start": "ts-node index.ts"
+  },
+  "devDependencies": {
+    "@types/bcryptjs": "^2.4.2",
+    "@types/graphql": "^14.5.0",
+    "@types/lodash": "^4.14.149",
+    "@types/mongoose": "^5.5.41",
+    "@types/nanoid": "^2.1.0",
+    "@types/node": "^13.1.6",
+    "ts-node": "^8.6.1",
+    "typescript": "^3.7.4"
+  },
+  "dependencies": {
+    "apollo-server": "^2.9.16",
+    "apollo-server-express": "^2.9.16",
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "graphql": "^14.5.8",
+    "graphql-tag": "^2.10.1",
+    "graphql-toolkit": "^0.2.14",
+    "jsonwebtoken": "^8.5.1",
+    "lodash": "^4.17.15",
+    "mongoose": "^5.8.7",
+    "nanoid": "^2.1.9",
+    "type-graphql": "^0.17.6",
+    "typegoose": "^5.9.1",
+    "dotenv": "^8.2.0"
   }
 }
