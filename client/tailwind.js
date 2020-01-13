@@ -13,15 +13,15 @@ module.exports = {
       black: '#16171A',
       white: '#FFFFFF',
       navy: '#0F015E',
-      primary: {
-        default: '#4400CC',
+      primary: ='#7B16FF',
+      secondary: '#24292E',
+      purple: {
         100: '#E8E5FF',
         200: '#DDD9FF',
         300: '#5856D6',
-        400: '#7B16FF',
+        400: '#4400CC',
         500: '#2A0080',
       },
-      secondary: '#24292E',
       blue: {
         default: '#007AFF',
         100: '#E6ECF7',
