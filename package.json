@@ -11,6 +11,7 @@
     "start:client": "lerna exec --scope=@spectrum/client -- yarn start",
     "dev:client": "lerna exec --scope=@spectrum/client -- yarn dev",
     "test:client": "lerna exec --scope=@spectrum/client -- yarn test",
+    "test:ci:client": "lerna exec --scope=@spectrum/client -- yarn test:ci",
     "storybook": "lerna exec --scope=@spectrum/client -- yarn storybook",
     "build-storybook": "lerna exec --scope=@spectrum/client -- yarn build-storybook",
     "start:admin": "lerna exec --scope=@spectrum/admin -- yarn start",
