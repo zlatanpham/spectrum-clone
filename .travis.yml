@@ -4,8 +4,9 @@ node_js:
   - 8
 
 script:
-  - npm run test:ci:client
+  - yarn test:ci:client
 
 cache:
+  yarn: true
   directories:
     - node_modules
