@@ -1,0 +1,25 @@
+name: STORYBOOK netlify deployment - Master Push
+
+on:
+  push:
+    branches:
+      - master
+    paths:
+      - '**.stories.tsx'
+      - '**.stories.js'
+      - client/.storybook/**
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v1
+      - name: Netlify storybook deployment
+        env:
+          NETLIFY_SITE_ID: ${{ secrets.STORYBOOK_SITE_ID }}
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+        run: |
+          yarn
+          yarn build-storybook
+          npx netlify-cli deploy --dir=client/storybook-static --prod --message='Storybook merge branch to master'
