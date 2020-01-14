@@ -4,8 +4,7 @@ node_js:
   - 8
 
 script:
-  - npm run build
-  - npm run test:ci
+  - yarn run test:ci
 
 cache:
   directories:
