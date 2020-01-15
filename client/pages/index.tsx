@@ -12,7 +12,7 @@ const Title = styled.h1`
 
 export default () => (
   <>
-    <Title>My page</Title>
+    <Title>My page 1</Title>
     <ExampleComponent></ExampleComponent>
   </>
 );
