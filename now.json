@@ -1,7 +1,6 @@
 {
   "name": "spectrum-clone",
   "version": 2,
-  "scope": "client",
   "public": false,
   "github": {
     "enabled": false
