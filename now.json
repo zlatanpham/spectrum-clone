@@ -1,0 +1,24 @@
+{
+  "name": "spectrum-clone",
+  "version": 2,
+  "scope": "client",
+  "public": false,
+  "github": {
+    "enabled": false
+  },
+  "builds": [
+    {
+      "src": "client/package.json",
+      "use": "@now/next"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "/client/$1",
+      "headers": {
+        "x-request-path": "$1"
+      }
+    }
+  ]
+}
