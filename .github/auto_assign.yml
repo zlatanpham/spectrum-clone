@@ -1,0 +1,14 @@
+addAssignees: author
+addReviewers: true
+numberOfReviewers: 0
+reviewers:
+  - vuhuucuong
+  - zlatanpham
+  - 4nmt
+  - danndz
+  - NguyenDiem
+  - putrann
+  - trongnguyen2706
+  - vdhieu
+skipKeywords:
+  - wip
