@@ -4,7 +4,6 @@
     "module": "CommonJS",
     "moduleResolution": "node",
     "allowJs": true,
-    "noEmit": true,
     "strict": true,
     "allowSyntheticDefaultImports": true,
     "skipLibCheck": true,
@@ -16,8 +15,9 @@
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "resolveJsonModule": true,
-    "isolatedModules": true
+    "isolatedModules": true,
+    "outDir": "./build"
   },
   "exclude": ["node_modules"],
-  "include": ["next-env.d.ts", "**/*.ts"]
+  "include": ["**/*.ts", "**/*.gql", "**/*.graphql"]
 }

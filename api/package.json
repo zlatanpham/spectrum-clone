@@ -4,7 +4,9 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "start": "ts-node index.ts"
+    "start": "node build/index.js",
+    "dev": "ts-node index.ts",
+    "build": "tsc"
   },
   "devDependencies": {
     "@types/bcryptjs": "^2.4.2",
@@ -14,7 +16,8 @@
     "@types/nanoid": "^2.1.0",
     "@types/node": "^13.1.6",
     "ts-node": "^8.6.1",
-    "typescript": "^3.7.4"
+    "typescript": "^3.7.4",
+    "jest": "^24.9.0"
   },
   "dependencies": {
     "apollo-server": "^2.9.16",

@@ -1,9 +1,10 @@
 import express from 'express';
-import { ApolloServer } from 'apollo-server-express';
+import { ApolloServer, makeExecutableSchema } from 'apollo-server-express';
 import mongoose from 'mongoose';
 
 import models from './models'
-import schema from './gql/schema'
+import typeDefs from './gql/typedefs'
+import resolvers from './gql/resolvers'
 import cfg from './cfg'
 import seedInitialData from './seed';
 
@@ -12,7 +13,11 @@ mongoose.connection.once('open', async () => {
   try {
     await seedInitialData()
     const app = express();
-    const server = new ApolloServer({ schema, context: { models } });
+    const schema = makeExecutableSchema({ typeDefs, resolvers })
+    const server = new ApolloServer({
+      schema,
+      context: { models }
+    });
     server.applyMiddleware({ app });
 
     app.listen({ port: cfg.PORT }, () =>

@@ -18,7 +18,11 @@
     "build-storybook": "lerna exec --scope=client -- yarn build-storybook",
     "start:admin": "lerna exec --scope=admin -- yarn start",
     "start:api": "lerna exec --scope=api -- yarn start",
-    "prettify": "prettier -c --write \"*/**\""
+    "build:api": "lerna exec --scope=api -- yarn build",
+    "dev:api": "lerna exec --scope=api -- yarn dev",
+    "prettify": "prettier -c --write \"*/**\"",
+    "heroku-prebuild": "yarn install && yarn bootstrap",
+    "heroku-postbuild": "yarn build:api"
   },
   "devDependencies": {
     "@commitlint/cli": "^8.3.4",
