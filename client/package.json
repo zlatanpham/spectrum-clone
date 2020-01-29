@@ -1,5 +1,5 @@
 {
-  "name": "@spectrum/client",
+  "name": "client",
   "version": "1.0.0",
   "scripts": {
     "dev": "next",
@@ -8,7 +8,8 @@
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
     "test": "jest",
-    "test:ci": "jest --env=jsdom --coverage --watchAll=false --maxWorkers=2"
+    "test:ci": "jest --env=jsdom --coverage --watchAll=false --maxWorkers=2",
+    "codegen": "graphql-codegen"
   },
   "dependencies": {
     "@storybook/addon-storysource": "^5.2.8",
@@ -22,13 +23,24 @@
     "react-dom": "16.12.0",
     "styled-components": "^4.1.3",
     "tailwind.macro": "1.0.0-alpha.10",
-    "tailwindcss": "^1.1.4"
+    "tailwindcss": "^1.1.4",
+    "apollo-cache-inmemory": "1.6.5",
+    "apollo-client": "2.6.8",
+    "@apollo/react-hooks": "3.1.3",
+    "@apollo/react-ssr": "3.1.3",
+    "graphql-tag": "2.10.1",
+    "apollo-link-schema": "1.2.4",
+    "apollo-link-http": "1.5.16",
+    "isomorphic-unfetch": "3.0.0",
+    "graphql":"14.5.8"
   },
   "devDependencies": {
     "@storybook/addon-actions": "5.2.3",
     "@storybook/addon-links": "5.2.3",
     "@storybook/addons": "5.2.3",
     "@storybook/react": "5.2.3",
+    "@graphql-codegen/cli":"1.11.2",
+    "@graphql-codegen/typescript": "1.11.2",
     "@testing-library/react": "9.4.0",
     "@types/jest": "24.0.25",
     "@types/node": "13.1.6",
@@ -39,6 +51,7 @@
     "babel-loader": "^8.0.5",
     "babel-plugin-styled-components": "^1.10.0",
     "babel-jest": "24.9.0",
+    "dotenv": "8.2.0",
     "typescript": "3.7.4",
     "jest": "24.9.0",
     "jest-dom": "4.0.0",

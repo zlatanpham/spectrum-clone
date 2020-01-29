@@ -1,5 +1,6 @@
 const path = require('path');
 const withCSS = require('@zeit/next-css');
+require('dotenv').config();
 
 module.exports = withCSS({
   webpack(config, options) {
@@ -9,5 +10,8 @@ module.exports = withCSS({
     config.resolve.alias['styles'] = path.join(__dirname, 'styles');
 
     return config;
+  },
+  env: {
+    CORE_API: process.env.CORE_API,
   },
 });
