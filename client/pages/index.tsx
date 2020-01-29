@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import tw from 'tailwind.macro';
 import ExampleComponent from 'components/ExampleComponent';
 
-import '../styles/index.css';
+import 'styles/index.css';
 
 const Title = styled.h1`
   ${tw`mb-10 bg-gray-900`}

@@ -6,6 +6,7 @@ module.exports = withCSS({
     config.resolve.alias['components'] = path.join(__dirname, 'components');
     config.resolve.alias['pages'] = path.join(__dirname, 'pages');
     config.resolve.alias['types'] = path.join(__dirname, 'types');
+    config.resolve.alias['styles'] = path.join(__dirname, 'styles');
 
     return config;
   },
