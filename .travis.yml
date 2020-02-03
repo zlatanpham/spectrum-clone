@@ -5,6 +5,7 @@ node_js:
 
 script:
   - yarn test:ci:client
+  - yarn build:api
 
 cache:
   yarn: true
