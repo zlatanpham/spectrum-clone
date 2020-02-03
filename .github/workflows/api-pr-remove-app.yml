@@ -26,9 +26,9 @@ jobs:
       - name: Set APP_NAME
         run: echo "::set-env name=APP_NAME::df-spectrum-pr-${{ env.PR_ID }}"
 
-      - name: Create Heroku app
+      - name: Remove Heroku app
         uses: actions/heroku@master
         env:
           HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
         with:
-          args: apps:destroy -a ${{ env.APP_NAME }} --confirm=confirm
+          args: apps:destroy -a ${{ env.APP_NAME }} --confirm=df-spectrum-pr-${{ env.PR_ID }}
