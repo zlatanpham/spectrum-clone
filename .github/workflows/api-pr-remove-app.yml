@@ -31,4 +31,4 @@ jobs:
         env:
           HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
         with:
-          args: apps:destroy -a ${{ env.APP_NAME }} --confirm=df-spectrum-pr-${{ env.PR_ID }}
+          args: apps:destroy -a ${{ env.APP_NAME }} --confirm=${{ env.APP_NAME }}
