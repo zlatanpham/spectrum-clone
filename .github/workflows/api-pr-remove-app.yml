@@ -15,7 +15,7 @@ jobs:
 
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v2
 
       - name: Get BRANCH_NAME
         run: echo "::set-env name=BRANCH_NAME::$(echo $GITHUB_HEAD_REF |  tr / -)"
@@ -26,9 +26,9 @@ jobs:
       - name: Set APP_NAME
         run: echo "::set-env name=APP_NAME::df-spectrum-pr-${{ env.PR_ID }}"
 
-      - name: Create Heroku app
+      - name: Remove Heroku app
         uses: actions/heroku@master
         env:
           HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
         with:
-          args: apps:destroy -a ${{ env.APP_NAME }} --confirm=confirm
+          args: apps:destroy -a ${{ env.APP_NAME }} --confirm=${{ env.APP_NAME }}
