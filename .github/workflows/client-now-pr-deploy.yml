@@ -1,4 +1,4 @@
-name: Client ZEIT deployment - Feature Pull Request
+name: Client NOW deployment - Feature Pull Request
 
 on:
   pull_request:
