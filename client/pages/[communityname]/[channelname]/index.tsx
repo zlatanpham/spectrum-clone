@@ -39,11 +39,11 @@ export default function ChannelPage() {
   return (
     <RightSidebarLayout>
       <RightSidebarLayout.Sidebar>
-        <div className="rounded bg-white border border-gray-300 mb-3 mt-3 p-3">
+        <div className="rounded bg-white border border-gray-300 mb-3 mt-3 p-4">
           <b>{communityname}</b> - Community info
         </div>
         <Card title="Channels" className="mb-3">
-          <ul className="p-3">
+          <ul className="p-4">
             {sampleChannelList.map(({ name, slug }) => (
               <li key={slug}>
                 <Link href={`/${communityname}/${slug}`}>
@@ -55,7 +55,7 @@ export default function ChannelPage() {
         </Card>
 
         <Card title="Teams">
-          <ul className="p-3">
+          <ul className="p-4">
             {sampleTeamList.map(({ name, slug }) => (
               <li key={slug}>
                 <Link href={`/users/${slug}`}>
@@ -67,7 +67,7 @@ export default function ChannelPage() {
         </Card>
       </RightSidebarLayout.Sidebar>
       <RightSidebarLayout.Body>
-        <ul className="p-3">
+        <ul className="p-4">
           {samplePostList.map(({ name, slug, id, channel }) => (
             <li key={slug}>
               <Link href={`/${communityname}/${channel.slug}/${slug}~${id}`}>

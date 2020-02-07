@@ -11,7 +11,7 @@ export default function UserNamePage() {
   return (
     <RightSidebarLayout>
       <RightSidebarLayout.Sidebar>
-        <div className="border border-gray-300 rounded mb-4 mt-4 bg-white p-3">
+        <div className="border border-gray-300 rounded mb-4 mt-4 bg-white p-4">
           <Link href={`/users/${username}/settings`}>
             <a>
               <button className="border border-gray-300 px-4 py-2 bg-white rounded-full block">
@@ -21,7 +21,7 @@ export default function UserNamePage() {
           </Link>
         </div>
         <Card title="Communities">
-          <div className="p-3">Community list</div>
+          <div className="p-4">Community list</div>
         </Card>
       </RightSidebarLayout.Sidebar>
       <RightSidebarLayout.Body>User Detail content</RightSidebarLayout.Body>

@@ -31,7 +31,7 @@ const Sidebar = () => {
           </li>
         ))}
       </ul>
-      <div className="border-t border-b border-gray-300 my-3 py-3 px-3">
+      <div className="border-t border-b border-gray-300 my-3 py-3 px-4">
         <h3 className="font-bold mb-5">Community</h3>
         <ul>
           {sampleCommunityList.map(({ name, slug }) => (
