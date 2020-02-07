@@ -1,7 +1,9 @@
-name: Client NOW deployment - Feature Pull Request
+name: Client NOW deployment - Master push
 
 on:
-  pull_request:
+  push:
+    branches:
+      - master
     paths:
       - client/**
       - now.json
@@ -18,3 +20,4 @@ jobs:
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           zeit-token: ${{ secrets.ZEIT_NOW_TOKEN }}
+          now-args: '--prod --force'
