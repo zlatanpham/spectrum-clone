@@ -2,6 +2,7 @@
   "name": "spectrum",
   "version": 2,
   "public": false,
+  "scope": "client",
   "github": {
     "enabled": false
   },
@@ -12,17 +13,8 @@
     }
   ],
   "routes": [
-    {
-      "src": "/(.*)",
-      "dest": "/client/$1"
-    },
-    {
-      "src": "/(.*)",
-      "headers": "filesystem"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/client/__error"
-    }
+    { "src": "/(.*)", "dest": "/client/$1" },
+    { "handle": "filesystem" },
+    { "src": "/(.*)", "dest": "/client/_error" }
   ]
 }
