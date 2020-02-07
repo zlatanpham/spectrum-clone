@@ -14,11 +14,13 @@ class MyApp extends App {
           <Component {...pageProps} />
         </AppContainer>
         <ToastContainer
+          draggable
           className="w-auto m-0 min-h-auto"
           toastClassName="bg-transparent shadow rounded w-auto p-0 min-h-0"
           autoClose={4000}
           closeButton={false}
           pauseOnHover={false}
+          pauseOnFocusLoss={false}
           hideProgressBar={true}
         />
       </>
