@@ -21,16 +21,18 @@ const UserSchema: Schema = new Schema({
   },
   email: { type: String, required: true, unique: true, },
   name: { type: String, required: true, minlength: 3 },
-  password: { type: String, required: true }
+  password: { type: String, required: true },
+  coverPhoto: { type: String, minlength: 3 },
+  avatarPhoto: { type: String, minlength: 3 },
 }, { timestamps: true });
 
 
 UserSchema.pre("save", function (next) {
-  const self = this as IUser
-  if (!self.isModified("password")) {
+  if (!this.isModified("password")) {
     return next();
   }
-  self.password = bcrypt.hashSync(self.password, bcrypt.genSaltSync(10));
+  // @ts-ignore
+  this.password = bcrypt.hashSync(self.password, bcrypt.genSaltSync(10));
   next();
 })
 
