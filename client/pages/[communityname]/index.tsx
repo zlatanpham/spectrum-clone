@@ -21,7 +21,7 @@ export default function CommunityNamePage() {
           Community info
         </div>
         <Card title="Channels">
-          <ul className="p-3">
+          <ul className="p-4">
             {sampleChannelList.map(({ name, slug }) => (
               <li key={slug}>
                 <Link href={`/${communityname}/${slug}`}>
