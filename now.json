@@ -14,10 +14,15 @@
   "routes": [
     {
       "src": "/(.*)",
-      "dest": "/client/$1",
-      "headers": {
-        "x-request-path": "$1"
-      }
+      "dest": "/client/$1"
+    },
+    {
+      "src": "/(.*)",
+      "headers": "filesystem"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/client/__error"
     }
   ]
 }
