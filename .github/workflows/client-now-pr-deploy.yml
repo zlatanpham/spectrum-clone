@@ -5,6 +5,7 @@ on:
     types: ['opened', 'synchronize']
     paths:
       - client/**
+      - now.json
       - '!client/.storybook/**'
       - '!**.stories.tsx'
       - '!**.stories.js'
@@ -18,3 +19,4 @@ jobs:
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           zeit-token: ${{ secrets.ZEIT_NOW_TOKEN }}
+          now-args: '--prod --force'
