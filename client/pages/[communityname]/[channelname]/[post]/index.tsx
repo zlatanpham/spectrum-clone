@@ -10,17 +10,22 @@ const sampleChannelList = [
   { name: 'Bootstrap', slug: 'bootstrap' },
 ];
 
-export default function CommunityNamePage() {
+const sampleTeamList = [
+  { name: 'John Doe', slug: 'john7' },
+  { name: 'Jessica Doe', slug: 'jessica' },
+];
+
+export default function ChannelPage() {
   const { query } = useRouter();
-  const { communityname } = query;
+  const { communityname, post } = query;
 
   return (
     <RightSidebarLayout>
       <RightSidebarLayout.Sidebar>
-        <div className="rounded bg-white border border-gray-300 mb-3 mt-3">
-          Community info
+        <div className="rounded bg-white border border-gray-300 mb-3 mt-3 p-3">
+          <b>{communityname}</b> - Community info
         </div>
-        <Card title="Channels">
+        <Card title="Channels" className="mb-3">
           <ul className="p-3">
             {sampleChannelList.map(({ name, slug }) => (
               <li key={slug}>
@@ -31,8 +36,20 @@ export default function CommunityNamePage() {
             ))}
           </ul>
         </Card>
+
+        <Card title="Teams">
+          <ul className="p-3">
+            {sampleTeamList.map(({ name, slug }) => (
+              <li key={slug}>
+                <Link href={`/users/${slug}`}>
+                  <a>{name}</a>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </Card>
       </RightSidebarLayout.Sidebar>
-      <RightSidebarLayout.Body>Community content</RightSidebarLayout.Body>
+      <RightSidebarLayout.Body>{JSON.stringify(post)}</RightSidebarLayout.Body>
     </RightSidebarLayout>
   );
 }

@@ -128,7 +128,8 @@ function createApolloClient(initialState = {}) {
   return new ApolloClient({
     ssrMode: typeof window === 'undefined', // Disables forceFetch on the server (so queries are only run once)
     link: new HttpLink({
-      uri: process.env.CORE_API || 'http://localhost:5000/graphql', // Server URL (must be absolute)
+      uri:
+        process.env.CORE_API || 'https://df-spectrum-api.herokuapp.com/graphql', // Server URL (must be absolute)
       credentials: 'same-origin', // Additional fetch() options like `credentials` or `headers`
       fetch,
     }),
