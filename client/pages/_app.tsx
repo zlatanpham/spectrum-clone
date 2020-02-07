@@ -15,7 +15,7 @@ class MyApp extends App {
         </AppContainer>
         <ToastContainer
           className="w-auto m-0 min-h-auto"
-          toastClassName="bg-transparent shadow-none w-auto p-0 min-h-0"
+          toastClassName="bg-transparent shadow rounded w-auto p-0 min-h-0"
           autoClose={4000}
           closeButton={false}
           pauseOnHover={false}

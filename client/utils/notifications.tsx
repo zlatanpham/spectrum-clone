@@ -3,23 +3,15 @@ import { toast } from 'react-toastify';
 import tw from 'tailwind.macro';
 import styled from 'styled-components';
 
-const MessageContainer = styled.div`
-  ${tw`px-3 py-2 rounded text-sm`};
+const Container = styled.div`
+  ${tw`px-3 py-2 rounded text-sm text-white`};
   width: 160px;
 `;
 
-const SuccessContainer = styled(MessageContainer)`
-  ${tw`bg-green-500 text-white`}
-`;
-
-const ErrorContainer = styled(MessageContainer)`
-  ${tw`bg-red-500 text-white`}
-`;
-
 export const showSuccessNotification = (message: string) => {
-  toast(<SuccessContainer>{message}</SuccessContainer>);
+  toast(<Container className="bg-green">{message}</Container>);
 };
 
 export const showErrorNotification = (message: string) => {
-  toast(<ErrorContainer>{message}</ErrorContainer>);
+  toast(<Container className="bg-red-100">{message}</Container>);
 };
