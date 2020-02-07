@@ -4,7 +4,7 @@
  */
 module.exports = {
   prefix: '',
-  important: false,
+  important: true,
   separator: ':',
   theme: {
     colors: {
@@ -40,7 +40,7 @@ module.exports = {
         default: '#FF3B30',
         100: '#ea4335',
         200: '#E22F2F',
-        dark: '#85000C',
+        500: '#85000C',
       },
       orange: {
         default: '#FF9500',

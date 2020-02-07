@@ -9,6 +9,10 @@ import { withApollo } from '../apollo/client';
 import gql from 'graphql-tag';
 import { useQuery } from '@apollo/react-hooks';
 import { User } from '../types/schema';
+import {
+  showSuccessNotification,
+  showErrorNotification,
+} from 'utils/notifications';
 
 const GET_USERS = gql`
   query getUsers {
@@ -50,6 +54,12 @@ const Index = () => {
             <li>{name}</li>
           ))}
         </ul>
+        <button onClick={() => showSuccessNotification('Post success!')}>
+          Show success notification
+        </button>
+        <button onClick={() => showErrorNotification('Post error!')}>
+          Show error notification
+        </button>
       </ExampleComponent>
     );
   }
