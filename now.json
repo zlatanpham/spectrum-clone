@@ -2,7 +2,6 @@
   "name": "spectrum",
   "version": 2,
   "public": false,
-  "scope": "client",
   "github": {
     "enabled": false
   },
