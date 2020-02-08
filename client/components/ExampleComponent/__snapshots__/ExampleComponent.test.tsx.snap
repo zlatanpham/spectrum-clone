@@ -3,7 +3,7 @@
 exports[`ExampleComponent should match snapshot 1`] = `
 .c0 {
   padding: 2rem;
-  background-color: #e2e8f0;
+  background-color: #EBECED;
   font-size: 1.5rem;
   font-weight: 700;
 }
