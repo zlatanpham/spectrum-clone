@@ -27,9 +27,12 @@ const SvgWrapper = styled.div<{ size: number }>`
 export default function createIcon(svg: React.ReactNode) {
   return ({
     size = 32,
+    className = '',
     ...props
-  }: { size?: number } & React.HTMLAttributes<SVGElement>) => (
-    <SvgWrapper size={size}>
+  }: { size?: number; className?: string } & React.HTMLAttributes<
+    SVGElement
+  >) => (
+    <SvgWrapper size={size} className={className}>
       <InlineSvg
         fillRule="evenodd"
         clipRule="evenodd"
