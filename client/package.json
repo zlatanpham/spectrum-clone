@@ -25,6 +25,7 @@
     "awesome-typescript-loader": "^5.2.1",
     "babel-plugin-macros": "^2.8.0",
     "classnames": "^2.2.6",
+    "formik": "^2.1.4",
     "graphql": "14.5.8",
     "graphql-tag": "2.10.1",
     "isomorphic-unfetch": "3.0.0",
