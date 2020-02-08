@@ -7,5 +7,11 @@ storiesOf('components/Input', module).add('Basic', () => (
     <Input placeholder="Input size medium..." />
     <div className="mt-2"></div>
     <Input inputSize="small" placeholder="Input size small..." />
+    <div className="mt-2"></div>
+    <Input
+      inputSize="small"
+      inputStyle="thin"
+      placeholder="Input base style..."
+    />
   </div>
 ));
