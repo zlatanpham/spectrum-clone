@@ -17,11 +17,11 @@ const RightSide = styled.div`
   width: calc(100vw - 256px);
 `;
 
-const AppContainer: React.FC<any> = ({ children }) => {
+const AppContainer: React.FC<any> = ({ children, isLogged }) => {
   return (
     <Container>
       <LeftSide>
-        <Sidebar />
+        <Sidebar isLogged={isLogged} />
       </LeftSide>
       <RightSide>{children}</RightSide>
     </Container>

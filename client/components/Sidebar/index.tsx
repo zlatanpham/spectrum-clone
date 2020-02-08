@@ -6,6 +6,10 @@ import IconPost from 'components/icons/IconPost';
 import IconPlus from 'components/icons/IconPlus';
 import IconExplore from 'components/icons/IconExplore';
 import CommunityBadge from './CommunityBadge';
+import Link from 'next/link';
+import { NextPage } from 'next';
+import { logout } from 'utils/auth';
+import IconDoorLeave from 'components/icons/IconDoorLeave';
 
 const Container = styled.div`
   ${tw`border-r border-gray-300 min-h-screen`}
@@ -37,7 +41,11 @@ const sampleCommunityList = [
   },
 ];
 
-const Sidebar = () => {
+export interface SidebarProps {
+  isLogged: boolean;
+}
+
+const Sidebar: NextPage<SidebarProps> = ({ isLogged }) => {
   return (
     <Container>
       <ul>
@@ -48,44 +56,71 @@ const Sidebar = () => {
             </SidebarMenuItem>
           </li>
         ))}
-        <li>
-          <SidebarMenuItem
-            placeholder={
-              <img
-                width="32px"
-                height="32px"
-                className="rounded-full"
-                src="https://spectrum-proxy.imgix.net/https%3A%2F%2Favatars0.githubusercontent.com%2Fu%2F12707960%3Fv%3D4?w=256&h=256&dpr=2&auto=compress&expires=1581465600000&ixlib=js-1.4.1&s=67f01cf25b4520650ff724de1eb54f45"
-              />
-            }
-            href={'/users/me'}
-            active={true}
-          >
-            Profile
-          </SidebarMenuItem>
-        </li>
+        {isLogged && (
+          <li>
+            <SidebarMenuItem
+              placeholder={
+                <img
+                  width="32px"
+                  height="32px"
+                  className="rounded-full"
+                  src="https://spectrum-proxy.imgix.net/https%3A%2F%2Favatars0.githubusercontent.com%2Fu%2F12707960%3Fv%3D4?w=256&h=256&dpr=2&auto=compress&expires=1581465600000&ixlib=js-1.4.1&s=67f01cf25b4520650ff724de1eb54f45"
+                />
+              }
+              href={'/users/me'}
+              active={true}
+            >
+              Profile
+            </SidebarMenuItem>
+          </li>
+        )}
       </ul>
       <div className="border-t border-b border-gray-300 my-3 py-3">
-        <ul>
-          {sampleCommunityList.map(({ name, slug, image }) => (
-            <SidebarMenuItem
-              key={slug}
-              placeholder={<CommunityBadge imageUrl={image} />}
-              href={`/${slug}`}
-              active={false}
+        {isLogged ? (
+          <ul>
+            {sampleCommunityList.map(({ name, slug, image }) => (
+              <SidebarMenuItem
+                key={slug}
+                placeholder={<CommunityBadge imageUrl={image} />}
+                href={`/${slug}`}
+                active={false}
+              >
+                {name}
+              </SidebarMenuItem>
+            ))}
+          </ul>
+        ) : (
+          <Link href="/login">
+            <a
+              title="Login"
+              className="bg-white text-black inline-block px-4 py-2 rounded"
             >
-              {name}
-            </SidebarMenuItem>
-          ))}
-        </ul>
+              Login or Sign up
+            </a>
+          </Link>
+        )}
       </div>
-      <SidebarMenuItem
-        placeholder={<IconPlus size={32} />}
-        href="/new/community"
-        active={false}
-      >
-        Create a community
-      </SidebarMenuItem>
+      {isLogged && (
+        <>
+          <SidebarMenuItem
+            placeholder={<IconPlus size={32} />}
+            href="/new/community"
+            active={false}
+          >
+            Create a community
+          </SidebarMenuItem>
+          <SidebarMenuItem
+            placeholder={<IconDoorLeave size={32} />}
+            active={false}
+            onClick={e => {
+              e.preventDefault();
+              logout();
+            }}
+          >
+            Log out
+          </SidebarMenuItem>
+        </>
+      )}
     </Container>
   );
 };

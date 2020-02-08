@@ -6,8 +6,9 @@ import Link from 'next/link';
 
 export interface SidebarMenuItemProps {
   placeholder: React.ReactNode;
-  href: string;
+  href?: string;
   active: boolean;
+  onClick?: (e: React.MouseEvent) => void;
 }
 
 const StyledLink = styled.a`
@@ -37,15 +38,18 @@ const SidebarMenuItem: React.FC<SidebarMenuItemProps> = ({
   active,
   href,
   placeholder,
+  onClick,
 }) => {
+  const linkContent = (
+    <StyledLink>
+      <IconWrapper>{placeholder}</IconWrapper>
+      <span className="ml-3">{children}</span>
+    </StyledLink>
+  );
+
   return (
-    <CustomMenuItem active={active}>
-      <Link href={href}>
-        <StyledLink>
-          <IconWrapper>{placeholder}</IconWrapper>
-          <span className="ml-3">{children}</span>
-        </StyledLink>
-      </Link>
+    <CustomMenuItem active={active} onClick={onClick}>
+      {href ? <Link href={href}>{linkContent}</Link> : linkContent}
     </CustomMenuItem>
   );
 };

@@ -6,7 +6,10 @@ import CommunityCard from 'components/user/CommunityCard';
 import UserPageCard from 'components/user/UserPageCard';
 const { TabPane } = Tabs;
 
-export default function UserNamePage() {
+// import { useRouter } from 'next/router';
+import { withAuthSync } from 'utils/auth';
+
+function UserNamePage() {
   const {
     query: { tab },
   } = useRouter();
@@ -47,3 +50,5 @@ export default function UserNamePage() {
     </RightSidebarLayout>
   );
 }
+
+export default withAuthSync(UserNamePage);

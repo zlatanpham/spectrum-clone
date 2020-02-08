@@ -15,7 +15,7 @@ class MyApp extends App {
 
     const contentRender =
       pathname !== '/login' ? (
-        <AppContainer>
+        <AppContainer {...pageProps}>
           <Component {...pageProps} />
         </AppContainer>
       ) : (

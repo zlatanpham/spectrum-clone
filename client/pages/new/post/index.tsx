@@ -8,6 +8,7 @@ import IconPhoto from 'components/icons/IconPhoto';
 import TransparentButton from 'components/Button/TransparentButton';
 import Tabs from 'components/Tabs';
 import { useRouter } from 'next/router';
+import { withAuthSync } from 'utils/auth';
 
 const { TabPane } = Tabs;
 
@@ -46,7 +47,7 @@ const communityOptions: OptionItem[] = [
   { name: 'Sketch', value: 'sketch' },
 ];
 
-export default function NewPost() {
+function NewPost() {
   const [community, setCommunity] = useState('');
   const { back } = useRouter();
   return (
@@ -104,3 +105,5 @@ export default function NewPost() {
     </Container>
   );
 }
+
+export default withAuthSync(NewPost);
