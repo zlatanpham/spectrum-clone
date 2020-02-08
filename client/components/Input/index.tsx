@@ -10,12 +10,20 @@ const StyledInput = styled.input<{ inputSize: InputSize }>`
   padding-top: ${props => (props.inputSize === 'small' ? '8px' : '16px')};
   padding-bottom: ${props => (props.inputSize === 'small' ? '8px' : '16px')};
   height: ${props => (props.inputSize === 'small' ? '32px' : '40px')};
+  &:disabled,
+  &:read-only {
+    ${tw`bg-gray-200`}
+  }
 `;
 
 const StyledBoldInput = styled(StyledInput)`
   ${tw`text-sm hover:border-gray-500 focus:border-purple-300`};
   transition: border-color 0.2s ease;
   border-width: 2px;
+  &:disabled,
+  &:read-only {
+    ${tw`hover:border-gray-300 focus:border-gray-300`}
+  }
 `;
 
 const StyledThinInput = styled(StyledInput)`
@@ -26,6 +34,8 @@ const StyledThinInput = styled(StyledInput)`
 export type InputProps = {
   inputStyle?: InputStyle;
   inputSize?: InputSize;
+  disabled?: boolean;
+  readOnly?: boolean;
 } & React.HTMLAttributes<HTMLInputElement>;
 
 const Input = ({

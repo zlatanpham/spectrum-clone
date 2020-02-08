@@ -13,5 +13,12 @@ storiesOf('components/Input', module).add('Basic', () => (
       inputStyle="thin"
       placeholder="Input base style..."
     />
+    <div className="mt-2"></div>
+    <Input
+      inputSize="small"
+      inputStyle="bold"
+      placeholder="https://github.com/yourname"
+      readOnly
+    />
   </div>
 ));
