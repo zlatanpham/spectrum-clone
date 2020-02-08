@@ -1,25 +1,25 @@
 import React from 'react';
-import { useField } from 'formik';
+import { useField, FieldHookConfig } from 'formik';
 
-export type FormElement = {
+export type FormElement<T> = {
   label?: string;
-};
+} & FieldHookConfig<any> &
+  T;
 
-export const createFormElement = (
-  Component: React.FC<React.HTMLAttributes<HTMLInputElement>>,
-) => {
-  const FormElement = ({ label, ...props }: FormElement) => {
-    // FIXME: should not have the warning
-    // @ts-ignore
+function createFormElement<T>(Component: React.FC<any>) {
+  const FormElement = ({ label, ...props }: FormElement<T>) => {
     const [field, meta] = useField(props);
-
     return (
       <>
         <label>
-          {label && <div>{label}</div>}
+          {label && (
+            <div className="text-sm font-medium leading-relaxed">{label}</div>
+          )}
           <Component {...field} {...props} />
           {meta.touched && meta.error ? (
-            <div className="error">{meta.error}</div>
+            <p className="mt-2 mb-4 text-red-200 text-sm font-medium">
+              {meta.error}
+            </p>
           ) : null}
         </label>
       </>
@@ -27,6 +27,6 @@ export const createFormElement = (
   };
 
   return FormElement;
-};
+}
 
 export default createFormElement;
