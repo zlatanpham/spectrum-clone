@@ -2,7 +2,6 @@ import React from 'react';
 import styled from 'styled-components';
 import tw from 'tailwind.macro';
 import ExampleComponent from 'components/ExampleComponent';
-
 import 'styles/index.css';
 
 import { withApollo } from '../apollo/client';
@@ -28,8 +27,7 @@ interface Data {
 }
 
 const Title = styled.h1`
-  ${tw`mb-10 bg-gray-900`}
-  color: red;
+  ${tw`mb-10 bg-gray-800 text-purple-300`}
   font-size: 50px;
 `;
 
