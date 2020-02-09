@@ -27,8 +27,7 @@ interface Data {
 }
 
 const Title = styled.h1`
-  ${tw`mb-10 bg-gray-900`}
-  color: red;
+  ${tw`mb-10 bg-gray-800 text-purple-300`}
   font-size: 50px;
 `;
 
