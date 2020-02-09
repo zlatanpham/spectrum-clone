@@ -9,7 +9,7 @@ const Container = styled.div`
 interface ExampleComponentProps {}
 
 const ExampleComponent: React.FC<ExampleComponentProps> = ({ children }) => {
-  return <Container className="border border-grey m-5">{children}</Container>;
+  return <Container className="border border-gray m-5">{children}</Container>;
 };
 
 export default ExampleComponent;

@@ -1,24 +1,31 @@
 import React from 'react';
 import RightSidebarLayout from 'components/Layout/RightSidebarLayout';
-import Link from 'next/link';
 import Card from 'components/Card';
-import { useRouter } from 'next/router';
+// import { useRouter } from 'next/router';
+import UserCard from 'components/ProfileCard/User';
+
+const user = {
+  id: '123',
+  name: 'Dan Nguyen',
+  username: 'dannd',
+  website: 'https://abc.xyz',
+  github: {
+    username: 'danndz',
+  },
+  isOnline: true,
+  description: 'Web developer',
+  profilePhoto:
+    'https://spectrum-proxy.imgix.net/https%3A%2F%2Favatars0.githubusercontent.com%2Fu%2F26010477%3Fv%3D4?w=256&h=256&dpr=2&auto=compress&expires=1577664000000&ixlib=js-1.4.1&s=45aba998f3be163a7f1721e6e0981559',
+};
 
 export default function UserNamePage() {
-  const { query } = useRouter();
-  const { username } = query;
+  // const { query } = useRouter();
 
   return (
     <RightSidebarLayout>
       <RightSidebarLayout.Sidebar>
-        <div className="border border-gray-300 rounded mb-4 mt-4 bg-white p-4">
-          <Link href={`/users/${username}/settings`}>
-            <a>
-              <button className="border border-gray-300 px-4 py-2 bg-white rounded-full block">
-                Settings
-              </button>
-            </a>
-          </Link>
+        <div className="border border-gray-300 rounded mb-4 mt-4 bg-white">
+          <UserCard user={user} />
         </div>
         <Card title="Communities">
           <div className="p-4">Community list</div>

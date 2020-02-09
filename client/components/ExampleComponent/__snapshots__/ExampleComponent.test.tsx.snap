@@ -9,6 +9,6 @@ exports[`ExampleComponent should match snapshot 1`] = `
 }
 
 <div
-  class="c0 border border-grey m-5"
+  class="c0 border border-gray m-5"
 />
 `;
