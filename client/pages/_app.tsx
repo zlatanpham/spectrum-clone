@@ -7,12 +7,24 @@ import 'react-toastify/dist/ReactToastify.css';
 
 class MyApp extends App {
   render() {
-    const { Component, pageProps } = this.props;
-    return (
-      <>
+    const {
+      Component,
+      pageProps,
+      router: { pathname },
+    } = this.props;
+
+    const contentRender =
+      pathname !== '/login' ? (
         <AppContainer>
           <Component {...pageProps} />
         </AppContainer>
+      ) : (
+        <Component {...pageProps} />
+      );
+
+    return (
+      <>
+        {contentRender}
         <ToastContainer
           draggable
           className="w-auto m-0 min-h-auto"

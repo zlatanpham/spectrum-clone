@@ -2,7 +2,6 @@ import React from 'react';
 import styled from 'styled-components';
 import tw from 'tailwind.macro';
 import ExampleComponent from 'components/ExampleComponent';
-
 import 'styles/index.css';
 
 import { withApollo } from '../apollo/client';
