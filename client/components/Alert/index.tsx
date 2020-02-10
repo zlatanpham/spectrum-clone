@@ -7,19 +7,19 @@ const Container = styled.div`
 `;
 
 const ErrorAlert = styled(Container)`
-  ${tw`border-red-200 bg-pink-200`}
+  ${tw`border-red bg-pink-200`}
 `;
 
 const WarningAlert = styled(Container)`
-  ${tw`border-yellow-300 bg-yellow-200`}
+  ${tw`border-yellow bg-yellow-200`}
 `;
 
 const SuccessAlert = styled(Container)`
-  ${tw`border-green-500 bg-green-200`}
+  ${tw`border-green bg-green-200`}
 `;
 
 const InfoAlert = styled(Container)`
-  ${tw`border-blue-700 bg-blue-300`}
+  ${tw`border-blue bg-blue-300`}
 `;
 
 export type AlertType = 'error' | 'warning' | 'info' | 'success';
