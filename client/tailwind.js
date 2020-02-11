@@ -16,11 +16,12 @@ module.exports = {
       primary: '#7B16FF',
       secondary: '#24292E',
       purple: {
-        100: '#E8E5FF',
-        200: '#DDD9FF',
-        300: '#5856D6',
-        400: '#4400CC',
-        500: '#2A0080',
+        100: '#F8F6FD',
+        200: '#E8E5FF',
+        300: '#DDD9FF',
+        400: '#5856D6',
+        500: '#4400CC',
+        600: '#2A0080',
       },
       blue: {
         default: '#007AFF',

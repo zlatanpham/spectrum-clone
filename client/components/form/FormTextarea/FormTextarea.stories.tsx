@@ -34,7 +34,7 @@ storiesOf('components/form/Textarea', module).add('Basic', () => (
           />
           <div className="mt-5">
             <button
-              className="rounded-full px-4 py-2 bg-purple-300 text-white"
+              className="rounded-full px-4 py-2 bg-purple-400 text-white"
               type="submit"
             >
               Submit

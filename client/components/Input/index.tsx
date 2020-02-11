@@ -17,7 +17,7 @@ const StyledInput = styled.input<{ inputSize: InputSize }>`
 `;
 
 const StyledBoldInput = styled(StyledInput)`
-  ${tw`text-sm hover:border-gray-500 focus:border-purple-300`};
+  ${tw`text-sm hover:border-gray-500 focus:border-purple-400`};
   transition: border-color 0.2s ease;
   border-width: 2px;
   &:disabled,
