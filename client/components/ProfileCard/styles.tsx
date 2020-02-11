@@ -5,11 +5,7 @@ export const Container = styled.div`
   ${tw`flex flex-col w-full relative`};
 `;
 
-interface CoverPhotoProps {
-  src: string;
-}
-
-export const CoverPhoto = styled.div<CoverPhotoProps>`
+export const CoverPhoto = styled.div<{ src: string }>`
   ${tw`relative w-full h-full bg-secondary overflow-hidden bg-cover bg-center rounded-t`}
   min-height: 133px;
   max-height: 133px;
@@ -76,33 +72,3 @@ export const ActionsContainer = styled.div`
     flex: 1;
   }
 `;
-
-// export const ChannelCommunityMetaRow = styled.div`
-//   display: flex;
-//   padding: 16px;
-//   margin-bottom: -12px;
-//   align-items: center;
-//   border-bottom: 1px solid ${theme.bg.border};
-//   background: transparent;
-
-//   &:hover {
-//     background: ${theme.bg.wash};
-//   }
-// `;
-
-// export const ChannelCommunityName = styled.div`
-//   font-size: 18px;
-//   font-weight: 500;
-//   color: ${theme.text.alt};
-//   margin-left: 16px;
-//   ${Truncate};
-// `;
-
-// export const Username = styled.div`
-//   font-size: 18px;
-//   font-weight: 500;
-//   color: ${theme.text.alt};
-//   margin-bottom: 4px;
-//   word-break: break-all;
-//   margin-top: 2px;
-// `;
