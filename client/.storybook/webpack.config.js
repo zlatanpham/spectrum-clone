@@ -26,12 +26,17 @@ module.exports = ({ config }) => {
     test: /\.stories\.tsx?$/,
     loaders: [
       {
-        loader: require.resolve('@storybook/addon-storysource/loader'),
+        loader: require.resolve('@storybook/source-loader'),
         options: { parser: 'typescript' },
       },
     ],
     enforce: 'pre',
   });
+
+  config.resolve.modules = [
+    ...(config.resolve.modules || []),
+    path.resolve('./'),
+  ];
 
   config.resolve.extensions.push('.ts', '.tsx');
   return config;

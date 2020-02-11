@@ -11,8 +11,8 @@ interface CoverPhotoProps {
 
 export const CoverPhoto = styled.div<CoverPhotoProps>`
   ${tw`relative w-full h-full bg-secondary overflow-hidden bg-cover bg-center rounded-t`}
-  min-height: 133.333px;
-  max-height: 133.333px;
+  min-height: 133px;
+  max-height: 133px;
   background-image: url(${props => props.src});
 `;
 

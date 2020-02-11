@@ -2,7 +2,7 @@ import React from 'react';
 import RightSidebarLayout from 'components/Layout/RightSidebarLayout';
 import Card from 'components/Card';
 // import { useRouter } from 'next/router';
-import UserCard from 'components/ProfileCard/User';
+import { UserCard } from 'components/ProfileCard';
 
 const user = {
   id: '123',
