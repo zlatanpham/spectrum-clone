@@ -1,6 +1,4 @@
-import nanoid from 'nanoid';
 import mongoose, { Schema, Document } from 'mongoose';
-import { IUser } from './user-model';
 
 export interface ICommunity extends Document {
   id: string;
@@ -16,10 +14,6 @@ export interface ICommunity extends Document {
 }
 
 const CommunitySchema: Schema = new Schema({
-  _id: {
-    type: String,
-    default: () => nanoid(12)
-  },
   slug: { type: String, required: true, unique: true, },
   name: { type: String, required: true, minlength: 3 },
   description: { type: String, required: true, minlength: 3 },
@@ -27,11 +21,6 @@ const CommunitySchema: Schema = new Schema({
   avatarPhoto: { type: String, minlength: 3 },
   isPublic: { type: Boolean, default: true },
   status: { type: String, enum: ['active', 'archived'], default: 'active' }
-}, { timestamps: true });
+}, { timestamps: true, capped: true });
 
-
-CommunitySchema.statics.getMembers = async function (): Promise<Array<IUser>> {
-  return []
-}
-
-export default mongoose.model<ICommunity>('Community', CommunitySchema);
+export default mongoose.model<ICommunity>('Community', CommunitySchema, 'communities');

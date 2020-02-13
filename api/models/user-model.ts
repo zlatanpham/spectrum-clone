@@ -1,4 +1,3 @@
-import nanoid from 'nanoid';
 import mongoose, { Schema, Document } from 'mongoose';
 import bcrypt from 'bcryptjs'
 
@@ -15,10 +14,6 @@ export interface IUser extends Document {
 }
 
 const UserSchema: Schema = new Schema({
-  _id: {
-    type: String,
-    default: () => nanoid(12)
-  },
   email: { type: String, required: true, unique: true, },
   name: { type: String, required: true, minlength: 3 },
   password: { type: String, required: true },
@@ -46,4 +41,4 @@ UserSchema.methods.comparePassword = async function (plainPwd: string): Promise<
   }
 }
 
-export default mongoose.model<IUser>('User', UserSchema);
+export default mongoose.model<IUser>('User', UserSchema, 'users');

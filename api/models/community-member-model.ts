@@ -1,4 +1,3 @@
-import nanoid from 'nanoid';
 import mongoose, { Schema, Document } from 'mongoose';
 import { IUser } from './user-model';
 import { ICommunity } from './community-model';
@@ -9,13 +8,11 @@ export interface ICommunityMember extends Document {
   updatedAt: Date;
   user: IUser;
   community: ICommunity;
+  role: string;
+  status: string;
 }
 
 const CommunityMemberSchema: Schema = new Schema({
-  _id: {
-    type: String,
-    default: () => nanoid(12)
-  },
   user: { type: Schema.Types.ObjectId, required: true, ref: 'User' },
   community: { type: Schema.Types.ObjectId, required: true, ref: 'Community' },
   role: { type: String, enum: ['owner', 'moderator', 'member'], default: 'member' },
@@ -23,4 +20,4 @@ const CommunityMemberSchema: Schema = new Schema({
 }, { timestamps: true });
 
 
-export default mongoose.model<ICommunityMember>('CommunityMember', CommunityMemberSchema);
+export default mongoose.model<ICommunityMember>('CommunityMember', CommunityMemberSchema, 'communityMembers');

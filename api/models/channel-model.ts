@@ -1,6 +1,4 @@
-import nanoid from 'nanoid';
 import mongoose, { Schema, Document } from 'mongoose';
-import { IUser } from './user-model';
 
 export interface IChannel extends Document {
   id: string;
@@ -17,10 +15,6 @@ export interface IChannel extends Document {
 }
 
 const ChannelSchema: Schema = new Schema({
-  _id: {
-    type: String,
-    default: () => nanoid(12)
-  },
   slug: { type: String, required: true, unique: true, },
   name: { type: String, required: true, minlength: 3 },
   description: { type: String, required: true, minlength: 3 },
@@ -31,8 +25,4 @@ const ChannelSchema: Schema = new Schema({
 }, { timestamps: true });
 
 
-ChannelSchema.statics.getMembers = async function (): Promise<Array<IUser>> {
-  return []
-}
-
-export default mongoose.model<IChannel>('Channel', ChannelSchema);
+export default mongoose.model<IChannel>('Channel', ChannelSchema, 'channels');

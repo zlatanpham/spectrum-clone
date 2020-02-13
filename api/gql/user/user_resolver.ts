@@ -1,9 +1,11 @@
+// @ts-nocheck
+import { getUsers } from "../../usecases/user"
+
 export default {
   Query: {
     users: async (_: object, __: object, ctx: object) => {
       try {
-        // @ts-ignore
-        const users = await ctx.models.UserModel.find()
+        const users = getUsers()
         return users
       } catch (err) {
         throw err

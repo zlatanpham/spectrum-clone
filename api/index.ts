@@ -1,22 +1,23 @@
 import express from 'express';
-import { ApolloServer, makeExecutableSchema } from 'apollo-server-express';
+import { ApolloServer } from 'apollo-server-express';
 import mongoose from 'mongoose';
-
-import models from './models'
-import typeDefs from './gql/typedefs'
-import resolvers from './gql/resolvers'
+import schema from './gql'
 import cfg from './cfg'
 import seedInitialData from './seed';
+import models from './models';
 
 mongoose.connect(cfg.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false, useCreateIndex: true })
 mongoose.connection.once('open', async () => {
   try {
     await seedInitialData()
     const app = express();
-    const schema = makeExecutableSchema({ typeDefs, resolvers })
     const server = new ApolloServer({
       schema,
-      context: { models }
+      async context(/*{req, res}*/) {
+        // FAKE authen ===> TODO implement authen and pass user object here
+        const user = await models.User.findOne({ email: 'spectrum@clone.com' })
+        return { user }
+      }
     });
     server.applyMiddleware({ app });
 

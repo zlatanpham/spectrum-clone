@@ -1,4 +1,3 @@
-import nanoid from 'nanoid';
 import mongoose, { Schema, Document } from 'mongoose';
 import { IUser } from './user-model';
 import { IChannel } from './channel-model';
@@ -16,10 +15,6 @@ export interface IPost extends Document {
 }
 
 const PostSchema: Schema = new Schema({
-  _id: {
-    type: String,
-    default: () => nanoid(12)
-  },
   title: { type: String, required: true, minlength: 3 },
   content: { type: String, required: true, minlength: 3 },
   author: { type: Schema.Types.ObjectId, required: true, ref: 'User' },
@@ -28,4 +23,4 @@ const PostSchema: Schema = new Schema({
   allowDiscussion: { type: Boolean, default: true },
 }, { timestamps: true });
 
-export default mongoose.model<IPost>('Post', PostSchema);
+export default mongoose.model<IPost>('Post', PostSchema, 'posts');
