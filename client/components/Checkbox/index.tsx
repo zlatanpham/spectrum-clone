@@ -7,12 +7,12 @@ import IconCheckmark from '../icons/IconCheckmark';
 export type CheckboxProps = {} & React.HTMLAttributes<HTMLInputElement>;
 
 const Label = styled.label`
-  ${tw`flex items-center hover:text-purple-300 cursor-pointer`};
+  ${tw`flex items-center hover:text-purple-400 cursor-pointer`};
 `;
 
 const HiddenInput = styled.input`
   ~ .checkbox-icon-mark {
-    ${tw`hidden text-purple-300`}
+    ${tw`hidden text-purple-400`}
   }
   ~ .checkbox-text {
     ${tw`ml-1 font-medium text-sm`}
@@ -25,7 +25,7 @@ const HiddenInput = styled.input`
       display: block;
     }
     ~ .checkbox-text {
-      ${tw`text-purple-300`}
+      ${tw`text-purple-400`}
     }
   }
 `;

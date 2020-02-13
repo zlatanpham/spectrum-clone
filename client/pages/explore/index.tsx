@@ -4,7 +4,7 @@ import Link from 'next/link';
 export default function ExplorePage() {
   return (
     <div className="w-full">
-      <div className="bg-purple-500 text-center py-20">
+      <div className="bg-purple-600 text-center py-20">
         <h2 className="font-bold text-white text-3xl">Find a community</h2>
         <p className="text-white mb-5">
           Try searching for topics like “crypto” or for products like “React”

@@ -32,7 +32,7 @@ const Spinner: React.FC<SpinnerProps> = ({ scheme = 'purple' }) => {
   return (
     <Icon
       className={classnames({
-        'border-purple-300': scheme === 'purple',
+        'border-purple-400': scheme === 'purple',
         'border-gray': scheme === 'gray',
       })}
     />
