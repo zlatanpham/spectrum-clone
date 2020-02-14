@@ -5,6 +5,7 @@ export default gql`
   type User {
     id: ID!
     name: String
+    email: String!
   }
 
   type Query {

@@ -10,6 +10,14 @@ export default gql`
     coverPhoto: String
     avatarPhoto: String
     isPublic: Boolean
+    members: [User!]
+  }
+
+  # TODO: dup with user typedef???
+  type User {
+    id: ID!
+    name: String
+    email: String!
   }
 
   input PaginationFilter {
@@ -19,7 +27,7 @@ export default gql`
 
   type Query {
     communities(search: String, pagination: PaginationFilter): [Community]!
-    community(id: ID!): [Community]!
+    community(id: ID!): Community!
   }
 
   input ICommunityForm {
@@ -33,5 +41,6 @@ export default gql`
 
   type Mutation {
     createCommunity(input: ICommunityForm!): Community!
+    updateCommunity(id: ID!, input: ICommunityForm!): Community!
   }
 `
