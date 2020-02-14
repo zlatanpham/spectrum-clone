@@ -13,44 +13,47 @@ interface CreateCommnunity {
   isPublic: boolean;
 }
 
-export async function getCommunities(userID: string, p: Pagination): Promise<ICommunity[]> {
-  let limit = p.pageSize || 10;
+export async function getCommunities(search?: string, userID?: string, p?: Pagination): Promise<ICommunity[]> {
+  let limit = p?.pageSize || 10;
   if (limit > 24) {
     limit = 24;
   }
-  const offset = p.page * limit || 0;
+  const offset = (p?.page || 0) * limit;
 
-  if (userID) {
-    return CommunityModel.aggregate([
-      {
-        $lookup: {
-          from: 'communityMembers',
-          let: { userID: userID, communityID: "$_id" },
-          pipeline: [
-            {
-              $match: {
-                $expr: {
-                  $and: [
-                    { $eq: ["$user", "$$userID"] },
-                    { $eq: ["$status", "approved"] },
-                    { $eq: ["$community", "$$communityID"] }
-                  ]
-                }
-              }
-            },
-            { $project: { createdAt: 0, updatedAt: 0, role: 0 } }
-          ],
-          as: 'users'
-        }
-      },
-      { $match: { $or: [{ isPublic: true }, { users: { $size: 1 } }] } },
-      { $sort: { "createdAt": 1 } },
-      { $skip: offset },
-      { $limit: limit }
-    ]).exec()
+  let query = CommunityModel.aggregate([]);
+  if (search) {
+    query = query.match({ $text: { $search: search } })
   }
 
-  return CommunityModel.find({ isPublic: true }).sort({ "createdAt": 1 }).skip(offset).limit(limit);
+  if (userID) {
+    query = query.lookup({
+      from: 'communityMembers',
+      let: { userID: userID, communityID: "$_id" },
+      pipeline: [
+        {
+          $match: {
+            $expr: {
+              $and: [
+                { $eq: ["$user", "$$userID"] },
+                { $eq: ["$status", "approved"] },
+                { $eq: ["$community", "$$communityID"] }
+              ]
+            }
+          }
+        },
+        { $project: { createdAt: 0, updatedAt: 0, role: 0 } }
+      ],
+      as: 'users'
+    })
+  }
+
+  if (search) {
+    query = query.sort({ score: { $meta: "textScore" }, "createdAt": 1 })
+  } else {
+    query = query.sort({ "createdAt": 1 })
+  }
+
+  return query.skip(offset).limit(limit).exec();
 }
 
 export async function createCommunity(form: CreateCommnunity, userID: string): Promise<ICommunity> {

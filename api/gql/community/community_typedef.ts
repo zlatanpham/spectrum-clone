@@ -12,8 +12,13 @@ export default gql`
     isPublic: Boolean
   }
 
+  input PaginationFilter {
+    page: Int
+    pageSize: Int
+  }
+
   type Query {
-    communities(page: Int, pageSize: Int): [Community]!
+    communities(search: String, pagination: PaginationFilter): [Community]!
     community(id: ID!): [Community]!
   }
 

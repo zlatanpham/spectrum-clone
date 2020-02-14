@@ -23,4 +23,6 @@ const CommunitySchema: Schema = new Schema({
   status: { type: String, enum: ['active', 'archived'], default: 'active' }
 }, { timestamps: true, capped: true });
 
+CommunitySchema.index({ name: 'text', description: 'text' })
+
 export default mongoose.model<ICommunity>('Community', CommunitySchema, 'communities');

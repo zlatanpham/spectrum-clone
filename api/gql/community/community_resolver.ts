@@ -2,11 +2,16 @@ import { getCommunities, createCommunity } from "../../usecases/community"
 import { GQLContext, Pagination } from "../../types"
 import { ICommunity } from "../../models/community-model"
 
+interface CommunityFilter {
+  pagingation: Pagination;
+  search: string;
+}
+
 export default {
   Query: {
-    communities: async (_: object, p: Pagination, ctx: GQLContext) => {
+    communities: async (_: object, f: CommunityFilter, ctx: GQLContext) => {
       try {
-        const comms = await getCommunities(ctx.user?._id, p)
+        const comms = await getCommunities(f.search, ctx.user?._id, f.pagingation)
         return comms
       } catch (err) {
         throw err
