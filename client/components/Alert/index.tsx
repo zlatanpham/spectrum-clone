@@ -38,13 +38,9 @@ const components: { [k in AlertType]: React.ElementType } = {
 };
 
 const Alert: React.FC<AlertProps> = props => {
-  const { type = 'warning', className = '', children, ...rest } = props;
+  const { type = 'warning', children, ...rest } = props;
   const RenderAlert = components[type];
-  return (
-    <RenderAlert className={className} {...rest}>
-      {children}
-    </RenderAlert>
-  );
+  return <RenderAlert {...rest}>{children}</RenderAlert>;
 };
 
 export default Alert;
