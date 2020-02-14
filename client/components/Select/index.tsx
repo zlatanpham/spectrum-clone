@@ -15,20 +15,15 @@ const GrayContainer = styled.div`
 `;
 
 const GraySelect = styled.select`
-  box-shadow: none;
+  ${tw`shadow-none rounded-full font-semibold overflow-hidden border-solid py-2 pr-10 pl-4 text-center`}
   -webkit-appearance: none;
-  font-weight: 600;
   font-size: 15px;
   color: rgb(36, 41, 46);
-  text-align: center;
   text-align-last: center;
-  padding: 8px 40px 8px 16px;
   border-width: 1px;
-  border-style: solid;
   border-color: rgb(235, 236, 237);
   border-image: initial;
   border-radius: 32px;
-  overflow: hidden;
   background: none rgb(255, 255, 255);
   outline: none;
 
@@ -65,14 +60,10 @@ const IconWrapper = styled.div`
 `;
 
 const PurpleSelect = styled.select<{ isNotEmpty: boolean }>`
-  display: inline-block;
-  box-shadow: none;
+  ${tw`inline-block rounded-lg px-3 py-2 shadow-none ml-2 font-medium text-sm overflow-hidden border-solid`}
   -webkit-appearance: none;
   cursor: pointer;
-  margin-left: 8px;
   box-sizing: border-box;
-  font-weight: 500;
-  font-size: 14px;
   max-height: 38px;
   max-width: 212px;
   line-height: 1.2;
@@ -82,11 +73,8 @@ const PurpleSelect = styled.select<{ isNotEmpty: boolean }>`
     props.isNotEmpty ? 'rgb(255, 255, 255)' : 'rgb(255, 255, 255)'};
   border-color: ${props =>
     props.isNotEmpty ? 'rgb(235, 236, 237)' : 'rgb(123, 22, 255)'};
-  padding: 8px 12px;
   border-width: 1px;
-  border-style: solid;
   border-image: initial;
-  border-radius: 8px;
   outline: none;
 
   &:active {
@@ -117,7 +105,6 @@ const Select = ({
   scheme = 'gray',
   ...rest
 }: SelectProps) => {
-  console.log(value);
   const optionsRender = options.map(({ value, name }) => (
     <option key={value} value={value}>
       {name}
