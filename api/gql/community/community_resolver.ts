@@ -8,6 +8,7 @@ import {
   getCommunityMembers
 } from "../../usecases/community"
 import { IUser } from "../../models/user-model"
+import { getChannelsByCommunityID } from "../../usecases/channel"
 
 interface CommunityFilter {
   pagination: Pagination;
@@ -57,6 +58,9 @@ export default {
     },
     members(c: ICommunity, { }: CommunityMemberFilter) {
       return getCommunityMembers(c._id)
+    },
+    channels(c: ICommunity) {
+      return getChannelsByCommunityID(c._id)
     }
   },
 

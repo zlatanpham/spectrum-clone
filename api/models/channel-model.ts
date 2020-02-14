@@ -10,8 +10,6 @@ export interface IChannel extends Document {
   description: string;
   coverPhoto: string;
   avatarPhoto: string;
-  // owner: IUser;
-  // members: Array<IUser>;
 }
 
 const ChannelSchema: Schema = new Schema({
@@ -21,6 +19,7 @@ const ChannelSchema: Schema = new Schema({
   coverPhoto: { type: String, minlength: 3 },
   avatarPhoto: { type: String, minlength: 3 },
   isPublic: { type: Boolean, default: true },
+  community: { type: Schema.Types.ObjectId, required: true, ref: 'Community' },
 
 }, { timestamps: true });
 

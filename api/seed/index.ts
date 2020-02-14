@@ -34,6 +34,7 @@ export default async function seedInitialData() {
       description: 'General channel for every one',
       slug: 'spectrum/general',
       owner: user?._id,
+      community: comm?._id,
     }, { upsert: true })
 
     await models.ChannelMember.findOneAndUpdate({ user: user?._id, channel: chan?._id }, {
