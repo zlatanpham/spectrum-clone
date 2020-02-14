@@ -1,40 +1,26 @@
 import { storiesOf } from '@storybook/react';
 import React from 'react';
-import Button from '.';
+import PrimaryButton from './PrimaryButton';
+import OutlineButton from './OutlineButton';
+import PrimaryOutlineButton from './PrimaryOutlineButton';
+import WarnButton from './WarnButton';
+import WhiteButton from './WhiteButton';
 
 storiesOf('components/Button', module).add('Button', () => (
-  <div className="flex flex-wrap">
-    <div className="w-1/4 p-4 m-4">
-      <Button type={'white-icon'} disabled>
-        Test deploy
-      </Button>
+  <>
+    <div className="p-5 bg-white flex">
+      <PrimaryButton>Hello World</PrimaryButton>
+      <OutlineButton>Hello World</OutlineButton>
+      <PrimaryOutlineButton>Hello World</PrimaryOutlineButton>
+      <WarnButton>Hello World</WarnButton>
+      <WhiteButton>Hello World</WhiteButton>
     </div>
-    <div className="w-1/4 p-4 m-4">
-      <Button type={'primary'}>Test deploy</Button>
+    <div className="p-5 bg-white flex">
+      <PrimaryButton size="small">Hello World</PrimaryButton>
+      <OutlineButton size="small">Hello World</OutlineButton>
+      <PrimaryOutlineButton size="small">Hello World</PrimaryOutlineButton>
+      <WarnButton size="small">Hello World</WarnButton>
+      <WhiteButton size="small">Hello World</WhiteButton>
     </div>
-    <div className="w-1/4 p-4 m-4">
-      <Button type={'white'}>Test deploy</Button>
-    </div>
-    <div className="w-1/4 p-4 m-4">
-      <Button type={'outline'}>Test deploy</Button>
-    </div>
-    <div className="w-1/4 p-4 m-4">
-      <Button type={'primary-outline'}>Test deploy</Button>
-    </div>
-    <div className="w-1/4 p-4 m-4">
-      <Button type={'white-outine'}>Test deploy</Button>
-    </div>
-    <div className="w-1/4 p-4 m-4">
-      <Button type={'warn-hover-outline'}>Test deploy</Button>
-    </div>
-    <div className="w-1/4 p-4 m-4">
-      <Button type={'text'}>Test deploy</Button>
-    </div>
-    <div className="w-1/4 p-4 m-4">
-      <Button type={'facebook'}>Test deploy</Button>
-    </div>
-    <div className="w-1/4 p-4 m-4">
-      <Button type={'twitter'}>Test deploy</Button>
-    </div>
-  </div>
+  </>
 ));

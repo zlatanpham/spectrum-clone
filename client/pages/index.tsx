@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 import tw from 'tailwind.macro';
-import ExampleComponent from 'components/ExampleComponent';
 import 'styles/index.css';
 
 import { withApollo } from '../apollo/client';
@@ -45,7 +44,7 @@ const Index = () => {
   if (data) {
     const { users } = data;
     return (
-      <ExampleComponent>
+      <div>
         <Title>Title</Title>
         <ul>
           {users.map(({ name }) => (
@@ -58,7 +57,7 @@ const Index = () => {
         <button onClick={() => showErrorNotification('Post error!')}>
           Show error notification
         </button>
-      </ExampleComponent>
+      </div>
     );
   }
 
