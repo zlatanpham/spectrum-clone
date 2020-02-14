@@ -10,7 +10,7 @@ export interface TipProps {
   placement?: Placement;
 }
 
-const Tip = ({ children, ...props }: TipProps) => {
+const Tip: React.FC<TipProps> = ({ children, ...props }: TipProps) => {
   const { style = {}, content = '', placement = 'top', ...rest } = props;
 
   if (!React.Children.only(children)) {

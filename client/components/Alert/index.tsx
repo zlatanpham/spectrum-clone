@@ -26,8 +26,9 @@ export type AlertType = 'error' | 'warning' | 'info' | 'success';
 
 export interface AlertProps {
   type: AlertType;
-  children: React.ReactElement;
+  children: React.ReactNode;
   className?: string;
+  style?: Object;
 }
 
 const components: { [k in AlertType]: React.ElementType } = {
@@ -37,10 +38,11 @@ const components: { [k in AlertType]: React.ElementType } = {
   info: InfoAlert,
 };
 
-const Alert = ({ children, className = '', type = 'warning' }: AlertProps) => {
+const Alert: React.FC<AlertProps> = props => {
+  const { type = 'warning', className = '', style = {}, children } = props;
   const RenderAlert = components[type];
   return (
-    <div className={className}>
+    <div className={className} style={style}>
       <RenderAlert>{children}</RenderAlert>
     </div>
   );
