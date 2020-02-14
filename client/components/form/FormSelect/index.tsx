@@ -5,7 +5,7 @@ import { useField, FieldHookConfig } from 'formik';
 export type FormSelectProps = FieldHookConfig<any> & SelectProps;
 
 const FormSelect = (props: FormSelectProps) => {
-  const [field, meta, helpers] = useField(props.name);
+  const [field, , helpers] = useField(props.name);
   return (
     <Select {...field} {...props} onChange={value => helpers.setValue(value)} />
   );
