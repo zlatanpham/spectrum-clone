@@ -4,11 +4,18 @@ import {
   getCommunities,
   createCommunity,
   getCommunity,
-  updateCommunity
+  updateCommunity,
+  getCommunityMembers
 } from "../../usecases/community"
+import { IUser } from "../../models/user-model"
 
 interface CommunityFilter {
-  pagingation: Pagination;
+  pagination: Pagination;
+  search: string;
+}
+
+interface CommunityMemberFilter {
+  pagination: Pagination;
   search: string;
 }
 
@@ -16,7 +23,7 @@ export default {
   Query: {
     async communities(_: object, f: CommunityFilter, ctx: GQLContext) {
       try {
-        const comms = await getCommunities(f.search, ctx.user?._id, f.pagingation)
+        const comms = await getCommunities(f.search, ctx.user?._id, f.pagination)
         return comms
       } catch (err) {
         throw err
@@ -31,6 +38,7 @@ export default {
       }
     }
   },
+
   Mutation: {
     // @ts-ignore
     async createCommunity(_: object, { input }: object, ctx: GQLContext) {
@@ -42,12 +50,19 @@ export default {
     }
   },
 
+  // custom resolver, run after main Query run
   Community: {
     id(c: ICommunity) {
       return c._id
     },
-    members() {
-      return []
+    members(c: ICommunity, { }: CommunityMemberFilter) {
+      return getCommunityMembers(c._id)
     }
+  },
+
+  User: {
+    id(u: IUser) {
+      return u._id
+    },
   }
 }

@@ -2,6 +2,7 @@ import CommunityModel, { ICommunity } from "../models/community-model";
 import mongoose, { ClientSession } from "mongoose";
 import CommunityMemberModel from "../models/community-member-model";
 import { Pagination } from "../types";
+import UserModel, { IUser } from "../models/user-model";
 
 
 interface CreateCommnunity {
@@ -44,8 +45,8 @@ export async function getCommunities(search?: string, userID?: string, p?: Pagin
         },
         { $project: { createdAt: 0, updatedAt: 0, role: 0 } }
       ],
-      as: 'users'
-    }).match({ $or: [{ isPublic: true }, { users: { $size: 1 } }] })
+      as: 'userRelations'
+    }).match({ $or: [{ isPublic: true }, { "userRelations.0": { $exists: true } }] })
   } else { // allow search public communities only
     query = query.match({ isPublic: true })
   }
@@ -145,5 +146,41 @@ export async function updateCommunity(id: string, form: CreateCommnunity, userID
     throw err
   } finally {
     tx?.endSession()
+  }
+}
+
+
+export async function getCommunityMembers(cid: string, p?: Pagination): Promise<IUser[]> {
+  try {
+    const query = UserModel.aggregate([
+      {
+        $lookup: {
+          from: 'communityMembers',
+          let: { userID: "$_id", communityID: cid },
+          pipeline: [
+            {
+              $match: {
+                $expr: {
+                  $and: [
+                    { $eq: ["$user", "$$userID"] },
+                    { $eq: ["$status", "approved"] },
+                    { $eq: ["$community", "$$communityID"] }
+                  ]
+                }
+              }
+            },
+            { $project: { createdAt: 0, updatedAt: 0, role: 0 } }
+          ],
+          as: 'communityRelations'
+        }
+      },
+      { $match: { "communityRelations.0": { $exists: true } } }
+    ])
+    const limit = p?.pageSize || 50
+    const offset = (p?.page || 0) * limit
+
+    return query.skip(offset).limit(limit)
+  } catch (err) {
+    throw err;
   }
 }

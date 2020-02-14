@@ -10,7 +10,7 @@ export default gql`
     coverPhoto: String
     avatarPhoto: String
     isPublic: Boolean
-    members: [User!]
+    members(pagination: PaginationFilter): [User!]
   }
 
   # TODO: dup with user typedef???
