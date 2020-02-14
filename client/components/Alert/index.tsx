@@ -3,23 +3,23 @@ import styled from 'styled-components';
 import tw from 'tailwind.macro';
 
 const Container = styled.div`
-  ${tw`p-4 rounded-sm border`}
+  ${tw`rounded border px-3 py-2 text-sm`}
 `;
 
 const ErrorAlert = styled(Container)`
-  ${tw`border-red bg-pink-200`}
+  ${tw`border-red bg-pink-100 text-red-500`}
 `;
 
 const WarningAlert = styled(Container)`
-  ${tw`border-yellow bg-yellow-200`}
+  ${tw`border-yellow-400 bg-yellow-200 text-brown-100`}
 `;
 
 const SuccessAlert = styled(Container)`
-  ${tw`border-green bg-green-200`}
+  ${tw`border-green bg-green-100 text-green-500`}
 `;
 
 const InfoAlert = styled(Container)`
-  ${tw`border-blue bg-blue-300`}
+  ${tw`border-blue bg-blue-200 text-blue-dark`}
 `;
 
 export type AlertType = 'error' | 'warning' | 'info' | 'success';
@@ -37,8 +37,7 @@ const components: { [k in AlertType]: React.ElementType } = {
   info: InfoAlert,
 };
 
-const Alert = ({ children, className = '', ...props }: AlertProps) => {
-  const { type } = props;
+const Alert = ({ children, className = '', type = 'warning' }: AlertProps) => {
   const RenderAlert = components[type];
   return (
     <div className={className}>

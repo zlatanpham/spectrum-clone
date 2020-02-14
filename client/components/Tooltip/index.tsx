@@ -1,16 +1,17 @@
-// @flow
 import React from 'react';
 import Tippy from '@tippy.js/react';
 import 'tippy.js/dist/tippy.css';
+import { Placement } from 'tippy.js';
 
 export interface TipProps {
   content: string;
   style?: Object;
   children: React.ReactElement;
+  placement?: Placement;
 }
 
 const Tip = ({ children, ...props }: TipProps) => {
-  const { style = {}, content = '', ...rest } = props;
+  const { style = {}, content = '', placement = 'top', ...rest } = props;
 
   if (!React.Children.only(children)) {
     console.error('Need to be only child');
@@ -19,7 +20,7 @@ const Tip = ({ children, ...props }: TipProps) => {
 
   return (
     <Tippy
-      placement="top"
+      placement={placement}
       touch={false}
       arrow={true}
       content={

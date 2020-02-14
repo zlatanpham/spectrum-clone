@@ -51,10 +51,15 @@ module.exports = {
       yellow: {
         default: '#FFCC00',
         100: '#FFF5E5',
-        200: '#FFE6BF',
-        300: '#F1C742',
+        200: '#fff1cc',
+        300: '#FFE6BF',
+        400: '#ffd566',
+        500: '#F1C742',
       },
-      brown: '#7D4A00',
+      brown: {
+        default: '#7D4A00',
+        100: '#715818',
+      },
       green: {
         default: '#00B88B',
         100: '#D9FFF2',
