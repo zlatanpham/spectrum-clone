@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import tw from 'tailwind.macro';
 
 export const MenuItem = styled('div')<{ active?: boolean }>`
-  ${tw`text-base bg-white hover:bg-gray-100 relative`};
+  ${tw`text-base bg-white hover:bg-gray-100 relative cursor-pointer`};
   ${props =>
     props.active ? tw`bg-gray-100 hover:bg-purple-100` : tw`bg-white`}
   height: 52px;

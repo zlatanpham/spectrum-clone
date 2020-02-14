@@ -1,6 +1,7 @@
 import React from 'react';
 import { ActionsContainer } from './styles';
 import Link from 'next/link';
+import OutlineButton from 'components/Button/OutlineButton';
 
 export interface UserActionsProps {
   user: any;
@@ -22,9 +23,7 @@ const UserActions: React.FC<UserActionsProps> = ({ user }) => {
     <ActionsContainer>
       {isPrimaryUser && (
         <Link href={`/users/${username}/settings`}>
-          <button className="border border-gray-300 px-4 py-2 bg-white rounded-full flex">
-            Settings
-          </button>
+          <OutlineButton>Settings</OutlineButton>
         </Link>
       )}
 
