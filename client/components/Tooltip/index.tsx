@@ -10,8 +10,14 @@ export interface TipProps {
   placement?: Placement;
 }
 
-const Tip: React.FC<TipProps> = ({ children, ...props }: TipProps) => {
-  const { style = {}, content = '', placement = 'top', ...rest } = props;
+const Tip: React.FC<TipProps> = props => {
+  const {
+    style = {},
+    content = '',
+    placement = 'top',
+    children,
+    ...rest
+  } = props;
 
   if (!React.Children.only(children)) {
     console.error('Need to be only child');
