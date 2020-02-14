@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Alert should match snapshot 1`] = `
+.c0 {
+  border-radius: 0.25rem;
+  border-width: 1px;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  font-size: 0.875rem;
+  border-color: #FF3B30;
+  background-color: #FFEDF6;
+  color: #85000C;
+}
+
+<div
+  class="c0 mb-3"
+  style="width: 500px;"
+>
+  <strong
+    class="text-black"
+  >
+    Trying to mute a specific conversation?
+  </strong>
+   
+  You can turn off email notifications for individual threads by clicking on the notification icon
+</div>
+`;
