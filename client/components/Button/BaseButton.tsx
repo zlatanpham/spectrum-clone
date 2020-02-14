@@ -4,11 +4,9 @@ import tw from 'tailwind.macro';
 import Link from 'next/link';
 
 export const Anchor = styled.a`
-  ${tw`flex items-center flex-none`}
-`;
-
-export const StyledLink = styled(Link)`
-  ${tw`flex items-center flex-none`}
+  display: flex;
+  align-items: center;
+  flex: 0 0 auto;
 `;
 
 type To = {
@@ -28,7 +26,7 @@ export type BaseButtonProps = {
   isLoading?: boolean;
   size?: ButtonSize;
   ButtonWrapper: React.FunctionComponent<{ size: ButtonSize }>;
-};
+} & React.HTMLAttributes<HTMLButtonElement>;
 
 export const BaseButtonStyled = styled.button<{ size: ButtonSize }>`
   ${tw`font-semibold flex items-center justify-center cursor-pointer flex-none leading-tight rounded-full`}
@@ -52,8 +50,13 @@ const BaseButton = ({
   size = 'medium',
   children,
   ButtonWrapper,
+  ...rest
 }: BaseButtonProps) => {
-  const button = <ButtonWrapper size={size}>{children}</ButtonWrapper>;
+  const button = (
+    <ButtonWrapper size={size} {...rest}>
+      {children}
+    </ButtonWrapper>
+  );
   if (href)
     return (
       <Anchor
@@ -64,7 +67,12 @@ const BaseButton = ({
         {button}
       </Anchor>
     );
-  if (to) return <StyledLink href={to}>{button}</StyledLink>;
+  if (to)
+    return (
+      <Link href={to}>
+        <Anchor>{button}</Anchor>
+      </Link>
+    );
   return button;
 };
 

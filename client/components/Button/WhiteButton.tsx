@@ -3,15 +3,14 @@ import styled from 'styled-components';
 
 const CustomStyledButton = styled(BaseButtonStyled)`
   color: rgb(36, 41, 46);
-  background: transparent;
+  background: white;
   transition: box-shadow 0.2s ease-in-out 0s;
   border-width: 0px;
   border-style: initial;
   border-color: initial;
   border-image: initial;
   &:hover {
-    background: transparent;
-    border-width: 0px;
+    background: rgb(235, 236, 237);
   }
   &:focus {
     box-shadow: rgb(255, 255, 255) 0px 0px 0px 2px,

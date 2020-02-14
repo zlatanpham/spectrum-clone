@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { ActionsContainer } from './styles';
+import OutlineButton from 'components/Button/OutlineButton';
 
 export interface CommunityActionsProps {
   community: any;
@@ -19,16 +20,16 @@ const CommunityActions: React.FC<CommunityActionsProps> = ({ community }) => {
   if (isMember) {
     return (
       <ActionsContainer>
-        {isTeamMember && <button>Settings</button>}
+        {isTeamMember && <OutlineButton>Settings</OutlineButton>}
 
         {!isOwner && (
-          <button
+          <OutlineButton
             onMouseEnter={onMouseEnter}
             onMouseLeave={onMouseLeave}
             onClick={handleLeaveCommunity}
           >
             {isHover ? 'Leave community' : 'Member'}
-          </button>
+          </OutlineButton>
         )}
       </ActionsContainer>
     );
@@ -36,7 +37,7 @@ const CommunityActions: React.FC<CommunityActionsProps> = ({ community }) => {
 
   return (
     <ActionsContainer>
-      <button>Join community</button>
+      <OutlineButton>Join community</OutlineButton>
     </ActionsContainer>
   );
 };
