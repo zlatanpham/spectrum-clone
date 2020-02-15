@@ -75,7 +75,7 @@ const PurpleSelect = styled.select<{ isNotEmpty: boolean }>`
     props.isNotEmpty ? 'rgb(235, 236, 237)' : 'rgb(123, 22, 255)'};
   border-width: 1px;
   border-image: initial;
-  outline: none;
+  outline: none !important;
 
   &:active {
     box-shadow: rgb(255, 255, 255) 0px 0px 0px 2px,

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { ActionsContainer } from './styles';
 import OutlineButton from 'components/Button/OutlineButton';
+import PrimaryButton from 'components/Button/PrimaryButton';
 
 export interface CommunityActionsProps {
   community: any;
@@ -37,7 +38,7 @@ const CommunityActions: React.FC<CommunityActionsProps> = ({ community }) => {
 
   return (
     <ActionsContainer>
-      <OutlineButton>Join community</OutlineButton>
+      <PrimaryButton>Join community</PrimaryButton>
     </ActionsContainer>
   );
 };
