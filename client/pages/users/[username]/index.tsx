@@ -1,8 +1,10 @@
 import React from 'react';
 import RightSidebarLayout from 'components/Layout/RightSidebarLayout';
 import Card from 'components/Card';
-// import { useRouter } from 'next/router';
 import { UserCard } from 'components/ProfileCard';
+import Tabs from 'components/Tabs';
+import { useRouter } from 'next/router';
+const { TabPane } = Tabs;
 
 const user = {
   id: '123',
@@ -19,7 +21,9 @@ const user = {
 };
 
 export default function UserNamePage() {
-  // const { query } = useRouter();
+  const {
+    query: { tab },
+  } = useRouter();
 
   return (
     <RightSidebarLayout>
@@ -31,7 +35,33 @@ export default function UserNamePage() {
           <div className="p-4">Community list</div>
         </Card>
       </RightSidebarLayout.Sidebar>
-      <RightSidebarLayout.Body>User Detail content</RightSidebarLayout.Body>
+      <RightSidebarLayout.Body>
+        <Tabs
+          current={tab as string}
+          options={[
+            { key: 'posts', name: 'Posts' },
+            { key: 'activity', name: 'Activity' },
+            { key: 'search', name: 'Search' },
+          ]}
+          onTabClick={key => {
+            window.history.pushState('', '', `?tab=${key}`);
+          }}
+          fullwidth
+        >
+          <TabPane
+            name="posts"
+            render={<div className="p-5">Posts</div>}
+          ></TabPane>
+          <TabPane
+            name="activity"
+            render={<div className="p-5">Activity</div>}
+          ></TabPane>
+          <TabPane
+            name="search"
+            render={<div className="p-5">Search</div>}
+          ></TabPane>
+        </Tabs>
+      </RightSidebarLayout.Body>
     </RightSidebarLayout>
   );
 }

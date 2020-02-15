@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import tw from 'tailwind.macro';
 
@@ -51,6 +51,10 @@ const Tabs = ({
   className = '',
 }: TabsProps) => {
   const [tab, setTab] = useState(current);
+
+  useEffect(() => {
+    setTab(current);
+  }, [current]);
 
   const renderChild = (Array.isArray(children)
     ? children
