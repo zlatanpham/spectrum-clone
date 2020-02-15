@@ -3,12 +3,7 @@ import RightSidebarLayout from 'components/Layout/RightSidebarLayout';
 import Card from 'components/Card';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-
-const sampleChannelList = [
-  { name: 'General', slug: 'general' },
-  { name: 'React', slug: 'react' },
-  { name: 'Bootstrap', slug: 'bootstrap' },
-];
+import ChannelsCard from 'components/community/ChannelsCard';
 
 const sampleTeamList = [
   { name: 'John Doe', slug: 'john7' },
@@ -25,17 +20,7 @@ export default function ChannelPage() {
         <div className="rounded bg-white border border-gray-300 mb-3 mt-3 p-4">
           <b>{communityname}</b> - Community info
         </div>
-        <Card title="Channels" className="mb-3">
-          <ul className="p-4">
-            {sampleChannelList.map(({ name, slug }) => (
-              <li key={slug}>
-                <Link href={`/${communityname}/${slug}`}>
-                  <a>{name}</a>
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </Card>
+        <ChannelsCard />
 
         <Card title="Teams">
           <ul className="p-4">
