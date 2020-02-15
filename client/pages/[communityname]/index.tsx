@@ -1,16 +1,8 @@
 import React from 'react';
 import RightSidebarLayout from 'components/Layout/RightSidebarLayout';
-import Card from 'components/Card';
-import Link from 'next/link';
-import { useRouter } from 'next/router';
 import { CommunityCard } from 'components/ProfileCard';
 import ThreadItem from 'components/ThreadItem';
-
-const sampleChannelList = [
-  { name: 'General', slug: 'general' },
-  { name: 'React', slug: 'react' },
-  { name: 'Bootstrap', slug: 'bootstrap' },
-];
+import ChannelsCard from 'components/community/ChannelsCard';
 
 const community = {
   name: 'Styled Components',
@@ -70,26 +62,13 @@ const threads = [
 ];
 
 export default function CommunityNamePage() {
-  const { query } = useRouter();
-  const { communityname } = query;
-
   return (
     <RightSidebarLayout>
       <RightSidebarLayout.Sidebar>
         <div className="rounded bg-white border border-gray-300 mb-3 mt-3">
           <CommunityCard community={community} />
         </div>
-        <Card title="Channels">
-          <ul className="p-4">
-            {sampleChannelList.map(({ name, slug }) => (
-              <li key={slug}>
-                <Link href={`/${communityname}/${slug}`}>
-                  <a>{name}</a>
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </Card>
+        <ChannelsCard />
       </RightSidebarLayout.Sidebar>
       <RightSidebarLayout.Body>
         {threads.map(item => (

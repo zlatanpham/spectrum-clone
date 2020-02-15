@@ -4,12 +4,7 @@ import Card from 'components/Card';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { CommunityCard } from 'components/ProfileCard';
-
-const sampleChannelList = [
-  { name: 'General', slug: 'general' },
-  { name: 'React', slug: 'react' },
-  { name: 'Bootstrap', slug: 'bootstrap' },
-];
+import ChannelsCard from 'components/community/ChannelsCard';
 
 const sampleTeamList = [
   { name: 'John Doe', slug: 'john7' },
@@ -64,18 +59,7 @@ export default function ChannelPage() {
         <div className="rounded bg-white border border-gray-300 mb-3 mt-3 p-4">
           <CommunityCard community={community} />
         </div>
-        <Card title="Channels" className="mb-3">
-          <ul className="p-4">
-            {sampleChannelList.map(({ name, slug }) => (
-              <li key={slug}>
-                <Link href={`/${communityname}/${slug}`}>
-                  <a>{name}</a>
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </Card>
-
+        <ChannelsCard />
         <Card title="Teams">
           <ul className="p-4">
             {sampleTeamList.map(({ name, slug }) => (
