@@ -2,30 +2,13 @@ import React from 'react';
 import RightSidebarLayout from 'components/Layout/RightSidebarLayout';
 import Card from 'components/Card';
 import Link from 'next/link';
-import { useRouter } from 'next/router';
 import { CommunityCard } from 'components/ProfileCard';
 import ChannelsCard from 'components/community/ChannelsCard';
+import ChannelThread from 'components/ChannelThread';
 
 const sampleTeamList = [
   { name: 'John Doe', slug: 'john7' },
   { name: 'Jessica Doe', slug: 'jessica' },
-];
-
-const samplePostList = [
-  {
-    name: 'How to meet deadline',
-    slug: 'how-to-meet-deadline',
-    id: '123-456-789',
-    channel: {
-      slug: 'react',
-    },
-  },
-  {
-    name: 'How to not sleep',
-    slug: 'how-to-not-sleep',
-    id: '987-654-321',
-    channel: { slug: 'react' },
-  },
 ];
 
 const community = {
@@ -50,9 +33,6 @@ const community = {
 };
 
 export default function ChannelPage() {
-  const { query } = useRouter();
-  const { communityname } = query;
-
   return (
     <RightSidebarLayout>
       <RightSidebarLayout.Sidebar>
@@ -73,15 +53,7 @@ export default function ChannelPage() {
         </Card>
       </RightSidebarLayout.Sidebar>
       <RightSidebarLayout.Body>
-        <ul className="p-4">
-          {samplePostList.map(({ name, slug, id, channel }) => (
-            <li key={slug}>
-              <Link href={`/${communityname}/${channel.slug}/${slug}~${id}`}>
-                <a>{name}</a>
-              </Link>
-            </li>
-          ))}
-        </ul>
+        <ChannelThread />
       </RightSidebarLayout.Body>
     </RightSidebarLayout>
   );
