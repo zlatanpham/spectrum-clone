@@ -2,7 +2,7 @@ import tw from 'tailwind.macro';
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  ${tw`flex flex-col w-full relative`};
+  ${tw`flex flex-col w-full relative bg-white border rounded-sm`};
 `;
 
 export const CoverPhoto = styled.div<{ src: string }>`
