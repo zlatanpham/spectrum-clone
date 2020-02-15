@@ -7,12 +7,16 @@ import CommunityActions from './CommunityActions';
 
 export interface CommunityCardProps {
   community: any;
+  className?: string;
 }
 
-const CommunityCard: React.FC<CommunityCardProps> = ({ community }) => {
+const CommunityCard: React.FC<CommunityCardProps> = ({
+  community,
+  className = '',
+}) => {
   const { slug, coverPhoto } = community;
   return (
-    <Container>
+    <Container className={className}>
       <Link href={`/${slug}`} passHref>
         <a>
           <CoverPhoto src={coverPhoto} />
