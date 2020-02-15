@@ -2,6 +2,7 @@ import React from 'react';
 import WhiteButton from 'components/Button/WhiteButton';
 import styled from 'styled-components';
 import tw from 'tailwind.macro';
+import Tabs from 'components/Tabs';
 
 const Container = styled.div`
   ${tw`flex flex-col justify-center text-center items-center mx-auto text-white`}
@@ -53,7 +54,17 @@ export default function ExplorePage() {
         </Container>
       </Hero>
 
-      <div className="py-3 px-2 bg-white border-b border-gray-300">Tab</div>
+      <Tabs
+        options={[
+          { key: 'top', name: 'Top Communities' },
+          { key: 'design', name: 'Design' },
+          { key: 'web', name: 'Web development' },
+          { key: 'tech', name: 'Tech' },
+          { key: 'life', name: 'Life' },
+        ]}
+        current="top"
+        fullwidth
+      ></Tabs>
 
       <div className="px-2 py-3">Community list</div>
     </div>

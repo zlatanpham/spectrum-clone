@@ -6,6 +6,10 @@ import IconMarkdown from 'components/icons/IconMarkdown';
 import PrimaryButton from 'components/Button/PrimaryButton';
 import IconPhoto from 'components/icons/IconPhoto';
 import TransparentButton from 'components/Button/TransparentButton';
+import Tabs from 'components/Tabs';
+import { useRouter } from 'next/router';
+
+const { TabPane } = Tabs;
 
 const Container = styled.div`
   ${tw`fixed inset-0 flex justify-center`}
@@ -44,8 +48,10 @@ const communityOptions: OptionItem[] = [
 
 export default function NewPost() {
   const [community, setCommunity] = useState('');
+  const { back } = useRouter();
   return (
     <Container>
+      <div className="absolute inset-0" onClick={() => back()}></div>
       <Body>
         <Header>
           <div>
@@ -58,7 +64,25 @@ export default function NewPost() {
             />
           </div>
         </Header>
-        <FormContent>Tab</FormContent>
+        <FormContent>
+          <Tabs
+            current="write"
+            options={[
+              { key: 'write', name: 'Write' },
+              { key: 'preview', name: 'Preview' },
+            ]}
+            fullwidth
+          >
+            <TabPane
+              name="write"
+              render={<div className="p-5">Write</div>}
+            ></TabPane>
+            <TabPane
+              name="preview"
+              render={<div className="p-5">Preview</div>}
+            ></TabPane>
+          </Tabs>
+        </FormContent>
         <Footer>
           <a
             className="inline-flex text-gray items-center"
@@ -70,7 +94,7 @@ export default function NewPost() {
             <IconMarkdown className="ml-1" />
           </a>
           <div className="flex items-center">
-            <TransparentButton className="mr-1" to="/explore">
+            <TransparentButton className="mr-1" onClick={() => back()}>
               Cancel
             </TransparentButton>
             <PrimaryButton>Publish</PrimaryButton>
