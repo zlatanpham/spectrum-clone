@@ -15,6 +15,9 @@ export interface ThreadItemProps {
     desc: string;
     likes: number;
     comments: number;
+    channelSlug: string;
+    slug: string;
+    id: string;
   };
   href: string;
   viewed: boolean;
