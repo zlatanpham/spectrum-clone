@@ -7,12 +7,13 @@ import UserActions from './UserActions';
 
 export interface UserCardProps {
   user: any;
+  className?: string;
 }
 
-const UserCard: React.FC<UserCardProps> = ({ user }) => {
+const UserCard: React.FC<UserCardProps> = ({ user, className = '' }) => {
   const { username, coverPhoto } = user;
   return (
-    <Container>
+    <Container className={className}>
       <Link href={`/users/${username}`}>
         <CoverPhoto src={coverPhoto} />
       </Link>

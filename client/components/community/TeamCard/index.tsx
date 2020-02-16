@@ -7,7 +7,7 @@ import tw from 'tailwind.macro';
 import OutlineButton from 'components/Button/OutlineButton';
 
 const CustomLi = styled.li`
-  ${tw`bg-white hover:bg-gray-100 block flex justify-between px-3 py-3 border-b border-gray-200 relative cursor-pointer`}
+  ${tw`bg-white hover:bg-gray-100 block flex justify-between px-3 py-3 border-b border-gray-200 relative cursor-pointer items-center`}
   transition: all 0.2s ease;
 `;
 
