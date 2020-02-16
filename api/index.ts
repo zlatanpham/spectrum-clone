@@ -6,6 +6,7 @@ import cfg from './cfg'
 import seedInitialData from './seed';
 import models from './models';
 
+mongoose.set('debug', !cfg.IS_PRODUCTION);
 mongoose.connect(cfg.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false, useCreateIndex: true })
 mongoose.connection.once('open', async () => {
   try {

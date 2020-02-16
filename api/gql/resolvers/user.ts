@@ -17,5 +17,11 @@ export default {
       id: '1',
       name: 'beo'
     })
+  },
+
+  User: {
+    id(u: IUser) {
+      return u._id
+    },
   }
 }

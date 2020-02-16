@@ -3,11 +3,10 @@ import { IUser } from './user-model';
 import { IChannel } from './channel-model';
 
 export interface IChannelMember extends Document {
-  id: string;
   createdAt: Date;
   updatedAt: Date;
-  user: IUser;
-  channel: IChannel;
+  user: IUser | string;
+  channel: IChannel | string;
 }
 
 const ChannelMemberSchema: Schema = new Schema({

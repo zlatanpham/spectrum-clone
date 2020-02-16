@@ -1,4 +1,3 @@
-import { GQLContext, Pagination } from "../../types"
 import { ICommunity } from "../../models/community-model"
 import {
   getCommunities,
@@ -7,8 +6,9 @@ import {
   updateCommunity,
   getCommunityMembers
 } from "../../usecases/community"
-import { IUser } from "../../models/user-model"
 import { getChannelsByCommunityID } from "../../usecases/channel"
+
+import { GQLContext, Pagination } from "../../types"
 
 interface CommunityFilter {
   pagination: Pagination;
@@ -63,10 +63,4 @@ export default {
       return getChannelsByCommunityID(c._id)
     }
   },
-
-  User: {
-    id(u: IUser) {
-      return u._id
-    },
-  }
 }

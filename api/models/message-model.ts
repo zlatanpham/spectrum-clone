@@ -3,13 +3,12 @@ import { IUser } from './user-model';
 import { IPost } from './post-model';
 
 export interface IMessage extends Document {
-  id: string;
   createdAt: Date;
   updatedAt: Date;
   content: string;
-  author: IUser;
-  replyTo: IMessage;
-  post: IPost;
+  author: IUser | string;
+  replyTo: IMessage | string;
+  post: IPost | string;
 }
 
 const MessageSchema: Schema = new Schema({

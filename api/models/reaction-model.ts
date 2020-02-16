@@ -4,13 +4,12 @@ import { IMessage } from './message-model';
 import { IPost } from './post-model';
 
 export interface IReaction extends Document {
-  id: string;
   createdAt: Date;
   updatedAt: Date;
   reaction: string;
-  author: IUser;
-  post: IPost;
-  message: IMessage;
+  author: IUser | string;
+  post: IPost | string;
+  message: IMessage | string;
 }
 
 const ReactionSchema: Schema = new Schema({

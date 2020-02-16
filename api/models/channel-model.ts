@@ -1,7 +1,6 @@
 import mongoose, { Schema, Document } from 'mongoose';
 
 export interface IChannel extends Document {
-  id: string;
   createdAt: Date;
   updatedAt: Date;
   name: string;

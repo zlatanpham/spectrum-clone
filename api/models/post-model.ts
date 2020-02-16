@@ -3,15 +3,14 @@ import { IUser } from './user-model';
 import { IChannel } from './channel-model';
 
 export interface IPost extends Document {
-  id: string;
   createdAt: Date;
   updatedAt: Date;
   title: string;
   content: string;
   allowDiscussion: boolean;
   isPinned: boolean;
-  author: IUser;
-  channel: IChannel;
+  author: IUser | string;
+  channel: IChannel | string;
 }
 
 const PostSchema: Schema = new Schema({
@@ -22,5 +21,7 @@ const PostSchema: Schema = new Schema({
   isPinned: { type: Boolean, default: false },
   allowDiscussion: { type: Boolean, default: true },
 }, { timestamps: true });
+
+PostSchema.index({ title: 'text' })
 
 export default mongoose.model<IPost>('Post', PostSchema, 'posts');

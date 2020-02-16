@@ -3,6 +3,7 @@ import mongoose, { ClientSession } from "mongoose";
 import CommunityMemberModel from "../models/community-member-model";
 import { Pagination } from "../types";
 import UserModel, { IUser } from "../models/user-model";
+import ChannelModel from "../models/channel-model";
 
 
 interface CreateCommnunity {
@@ -70,8 +71,24 @@ export async function createCommunity(form: CreateCommnunity, userID: string): P
     let com = new CommunityModel({ ...form })
     com = await com.save({ session: tx })
 
-    const comMem = new CommunityMemberModel({ user: userID, community: com._id, role: 'owner' })
+    const comMem = new CommunityMemberModel({
+      user: userID,
+      community: com._id,
+      role: 'owner',
+      status: 'approved'
+    })
     await comMem.save({ session: tx })
+
+    const chan = new ChannelModel({
+      slug: 'spectrum/general',
+      name: 'General',
+      description: 'General channel for every one',
+      owner: userID,
+      community: com?._id,
+      isPublic: true
+    })
+
+    await chan.save({ session: tx })
 
     await tx.commitTransaction()
 

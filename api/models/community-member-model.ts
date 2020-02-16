@@ -3,11 +3,10 @@ import { IUser } from './user-model';
 import { ICommunity } from './community-model';
 
 export interface ICommunityMember extends Document {
-  id: string;
   createdAt: Date;
   updatedAt: Date;
-  user: IUser;
-  community: ICommunity;
+  user: IUser | string;
+  community: ICommunity | string;
   role: string;
   status: string;
 }
