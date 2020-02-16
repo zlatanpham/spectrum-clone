@@ -1,24 +1,10 @@
 import React from 'react';
 import RightSidebarLayout from 'components/Layout/RightSidebarLayout';
-import Card from 'components/Card';
-import { UserCard } from 'components/ProfileCard';
 import Tabs from 'components/Tabs';
 import { useRouter } from 'next/router';
+import CommunityCard from 'components/user/CommunityCard';
+import UserPageCard from 'components/user/UserPageCard';
 const { TabPane } = Tabs;
-
-const user = {
-  id: '123',
-  name: 'Dan Nguyen',
-  username: 'dannd',
-  website: 'https://abc.xyz',
-  github: {
-    username: 'danndz',
-  },
-  isOnline: true,
-  description: 'Web developer',
-  profilePhoto:
-    'https://spectrum-proxy.imgix.net/https%3A%2F%2Favatars0.githubusercontent.com%2Fu%2F26010477%3Fv%3D4?w=256&h=256&dpr=2&auto=compress&expires=1577664000000&ixlib=js-1.4.1&s=45aba998f3be163a7f1721e6e0981559',
-};
 
 export default function UserNamePage() {
   const {
@@ -28,12 +14,8 @@ export default function UserNamePage() {
   return (
     <RightSidebarLayout>
       <RightSidebarLayout.Sidebar>
-        <div className="border border-gray-300 rounded mb-4 mt-4 bg-white">
-          <UserCard user={user} />
-        </div>
-        <Card title="Communities">
-          <div className="p-4">Community list</div>
-        </Card>
+        <UserPageCard />
+        <CommunityCard />
       </RightSidebarLayout.Sidebar>
       <RightSidebarLayout.Body>
         <Tabs

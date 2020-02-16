@@ -4,6 +4,7 @@ import ChannelsCard from 'components/community/ChannelsCard';
 import CommunityPageCard from 'components/community/CommunityPageCard';
 import TeamCard from 'components/community/TeamCard';
 import { useRouter } from 'next/router';
+import PostHeader from 'components/post/PostHeader';
 
 export default function ChannelPage() {
   const { query } = useRouter();
@@ -16,7 +17,10 @@ export default function ChannelPage() {
         <ChannelsCard />
         <TeamCard />
       </RightSidebarLayout.Sidebar>
-      <RightSidebarLayout.Body>{JSON.stringify(post)}</RightSidebarLayout.Body>
+      <RightSidebarLayout.Body>
+        <PostHeader />
+        {JSON.stringify(post)}
+      </RightSidebarLayout.Body>
     </RightSidebarLayout>
   );
 }
