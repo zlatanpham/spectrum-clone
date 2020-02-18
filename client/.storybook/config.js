@@ -1,5 +1,12 @@
 import { configure, addParameters } from '@storybook/react';
+import Router from 'next/router';
+
 import '../styles/index.css';
+
+Router.router = {
+  push: () => {},
+  prefetch: () => {},
+};
 
 addParameters({
   options: {

@@ -13,10 +13,12 @@ const Card: React.FC<CardProps> = ({ children, title, className = '' }) => {
         [className]: className,
       })}
     >
-      <div className="border-b border-gray-300 px-3 py-4">
-        <h4 className="font-bold text-black">{title}</h4>
+      <div className="border-b border-gray-300 px-4 py-4">
+        <h4 className="font-bold text-black text-base leading-tight">
+          {title}
+        </h4>
       </div>
-      <div>{children}</div>
+      {children}
     </div>
   );
 };

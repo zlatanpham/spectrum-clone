@@ -1,30 +1,49 @@
 import React from 'react';
 import RightSidebarLayout from 'components/Layout/RightSidebarLayout';
-import Link from 'next/link';
-import Card from 'components/Card';
+import Tabs from 'components/Tabs';
 import { useRouter } from 'next/router';
+import CommunityCard from 'components/user/CommunityCard';
+import UserPageCard from 'components/user/UserPageCard';
+const { TabPane } = Tabs;
 
 export default function UserNamePage() {
-  const { query } = useRouter();
-  const { username } = query;
+  const {
+    query: { tab },
+  } = useRouter();
 
   return (
     <RightSidebarLayout>
       <RightSidebarLayout.Sidebar>
-        <div className="border border-gray-300 rounded mb-4 mt-4 bg-white p-3">
-          <Link href={`/users/${username}/settings`}>
-            <a>
-              <button className="border border-gray-300 px-4 py-2 bg-white rounded-full block">
-                Settings
-              </button>
-            </a>
-          </Link>
-        </div>
-        <Card title="Communities">
-          <div className="p-3">Community list</div>
-        </Card>
+        <UserPageCard />
+        <CommunityCard />
       </RightSidebarLayout.Sidebar>
-      <RightSidebarLayout.Body>User Detail content</RightSidebarLayout.Body>
+      <RightSidebarLayout.Body>
+        <Tabs
+          current={tab as string}
+          options={[
+            { key: 'posts', name: 'Posts' },
+            { key: 'activity', name: 'Activity' },
+            { key: 'search', name: 'Search' },
+          ]}
+          onTabClick={key => {
+            window.history.pushState('', '', `?tab=${key}`);
+          }}
+          fullwidth
+        >
+          <TabPane
+            name="posts"
+            render={<div className="p-5">Posts</div>}
+          ></TabPane>
+          <TabPane
+            name="activity"
+            render={<div className="p-5">Activity</div>}
+          ></TabPane>
+          <TabPane
+            name="search"
+            render={<div className="p-5">Search</div>}
+          ></TabPane>
+        </Tabs>
+      </RightSidebarLayout.Body>
     </RightSidebarLayout>
   );
 }
