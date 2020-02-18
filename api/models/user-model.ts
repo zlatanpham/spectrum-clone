@@ -1,9 +1,7 @@
-import nanoid from 'nanoid';
 import mongoose, { Schema, Document } from 'mongoose';
 import bcrypt from 'bcryptjs'
 
 export interface IUser extends Document {
-  id: string;
   name: string;
   email: string;
   password: string;
@@ -15,22 +13,20 @@ export interface IUser extends Document {
 }
 
 const UserSchema: Schema = new Schema({
-  _id: {
-    type: String,
-    default: () => nanoid(12)
-  },
   email: { type: String, required: true, unique: true, },
   name: { type: String, required: true, minlength: 3 },
-  password: { type: String, required: true }
+  password: { type: String, required: true },
+  coverPhoto: { type: String, minlength: 3 },
+  avatarPhoto: { type: String, minlength: 3 },
 }, { timestamps: true });
 
 
 UserSchema.pre("save", function (next) {
-  const self = this as IUser
-  if (!self.isModified("password")) {
+  if (!this.isModified("password")) {
     return next();
   }
-  self.password = bcrypt.hashSync(self.password, bcrypt.genSaltSync(10));
+  // @ts-ignore
+  this.password = bcrypt.hashSync(self.password, bcrypt.genSaltSync(10));
   next();
 })
 
@@ -44,4 +40,4 @@ UserSchema.methods.comparePassword = async function (plainPwd: string): Promise<
   }
 }
 
-export default mongoose.model<IUser>('User', UserSchema);
+export default mongoose.model<IUser>('User', UserSchema, 'users');
