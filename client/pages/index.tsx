@@ -11,6 +11,7 @@ import {
   showSuccessNotification,
   showErrorNotification,
 } from 'utils/notifications';
+import { withAuthSync } from 'utils/auth';
 
 const GET_USERS = gql`
   query getUsers {
@@ -64,4 +65,4 @@ const Index = () => {
   return null;
 };
 
-export default withApollo(Index);
+export default withApollo(withAuthSync(Index));

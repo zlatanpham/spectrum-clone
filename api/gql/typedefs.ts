@@ -1,7 +1,8 @@
-
-import { gql } from 'apollo-server'
+import { gql } from 'apollo-server';
 
 export default gql`
+  directive @auth on FIELD | FIELD_DEFINITION
+
   type User {
     id: ID!
     name: String
@@ -65,7 +66,7 @@ export default gql`
 
   type Query {
     # Users
-    users: [User]!
+    users: [User]! @auth
 
     # Communities
     community(id: ID!): Community!
@@ -78,7 +79,6 @@ export default gql`
     post(id: ID!): Post!
     posts(channelID: ID!, search: String, pagination: PaginationFilter): [Post!]
   }
-
 
   type Mutation {
     # Users
@@ -134,4 +134,4 @@ export default gql`
     content: String
     replyTo: ID
   }
-`
+`;

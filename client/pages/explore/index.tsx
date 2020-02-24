@@ -3,6 +3,7 @@ import WhiteButton from 'components/Button/WhiteButton';
 import styled from 'styled-components';
 import tw from 'tailwind.macro';
 import Tabs from 'components/Tabs';
+import { withAuthSync } from 'utils/auth';
 
 const Container = styled.div`
   ${tw`flex flex-col justify-center text-center items-center mx-auto text-white`}
@@ -27,7 +28,7 @@ const Hero = styled.div`
   );
 `;
 
-export default function ExplorePage() {
+function ExplorePage() {
   return (
     <div className="w-full">
       <Hero className="text-white text-center py-20">
@@ -70,3 +71,5 @@ export default function ExplorePage() {
     </div>
   );
 }
+
+export default withAuthSync(ExplorePage);

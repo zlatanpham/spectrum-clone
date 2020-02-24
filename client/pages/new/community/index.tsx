@@ -1,6 +1,9 @@
 import React from 'react';
 import SingleColumnLayout from 'components/Layout/SingleColumnLayout';
+import { withAuthSync } from 'utils/auth';
 
-export default function NewCommunity() {
+function NewCommunity() {
   return <SingleColumnLayout>Create Community</SingleColumnLayout>;
 }
+
+export default withAuthSync(NewCommunity);
